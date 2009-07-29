@@ -5,9 +5,6 @@
 
 class YogoAuthz::Membership
   include DataMapper::Resource
-  def self.default_repository_name
-    :users
-  end
   
   property :id,     Serial
   

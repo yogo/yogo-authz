@@ -13,22 +13,14 @@ This plugin/engine requires the following gems to be installed:
 * dm-validations
 * dm-timestamps
 * dm-validations
-* awesome_nested_set -- http://github.com/collectiveidea/awesome_nested_set/tree/master
+* dm_is_nested-set
 
 While Yogo uses Perseverse to store scientific data, this plugin stores it's information 
 in a relational database.
 
 A database with the identify of users needs to be configured in the database.yml file.
 
-eg.
-users:
-  adapter: sqlite3
-  database: db/development.sqlite3
 
-config/initializers/datamapper.rb need to be updated to load this configuration. This can by adding
-this line the the config file:
-
-DataMapper.setup(:users, config['users'])
 
 
 == RESOURCES

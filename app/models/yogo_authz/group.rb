@@ -6,10 +6,6 @@
 class YogoAuthz::Group
   include DataMapper::Resource
   
-  def self.default_repository_name
-    :users
-  end
-  
   is_nested_set
   
   property :id,           Serial

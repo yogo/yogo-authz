@@ -1,9 +1,6 @@
 class YogoAuthz::Permission
   include DataMapper::Resource
   include YogoAuthz::ControllerHelpers 
-  def self.default_repository_name
-    :users
-  end
   
   property :id,               Serial
   property :group_id,         Integer, :index => true

@@ -5,11 +5,8 @@
 # Datamapper's view into the Users table.
 class YogoAuthz::WebUser
   include DataMapper::Resource
-  def self.default_repository_name
-    :users
-  end
   
-  storage_names[:users] = 'users'
+  storage_names[:default] = 'users'
   
   property :id,                 Serial
   property :login,              String, :nullable => false, :index => true
