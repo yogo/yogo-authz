@@ -3,7 +3,7 @@
 #
 # FILE: controller.rb
 # I think this should be a class containing the controllers, descriptions of the controllers.
-class Controller
+class YogoAuthz::Controller
   include YogoAuthz::ControllerHelpers 
   # include DataMapper::Resource
   # def self.default_repository_name

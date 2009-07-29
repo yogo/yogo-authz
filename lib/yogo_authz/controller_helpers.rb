@@ -27,7 +27,7 @@ module YogoAuthz
         paths.uniq!
 
         # These files are probably controllers.
-        files = paths.collect{|path| Dir.glob(path+"/*_controller.rb")}.flatten
+        files = paths.collect{|path| Dir.glob(path+"/**/*_controller.rb")}.flatten
   
         controllers = []
         files.each do |file_name|
