@@ -1,0 +1,271 @@
+# Logfile created on Fri Jul 24 09:30:45 -0600 2009 by logger.rb/22285
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.9ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.2ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.7ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('0')[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '04dd4ce8d6dfdabc3a71966fa6a4b3dad10a0dee938e5d7e13') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '8d6d9fb97a505935d36230fd3cafbc687502c4fceeaba7aba1') LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '8d5fd083707dff786317f6d75ea425561bcef4f267d0dcd24e') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '0675ba5d248b9c912face7c359e06a5596a58752e20c07e45a') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '8d4e331d00880897a335fca9c352b06c85d42718b6b287877c') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '8e05474b1718b2daee20ed3ed0484ddcfc59e66b801263ec0a') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'be7992539aaa1bb8caa0e15ba924409181e593b9ea125edef6') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '6e36a93b8e510945a0c08cf833efa577b5e5e77237f28d5ca0') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '9b117084e05f9f7895338846cb54233fedde18de043c1e48d6') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'e9fe9aea3ed322ef6d5e3aca1960c46e43c50024d571f49006') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '310243099fedacfc6da2730ce89ade6702b8a56edac883ddb3') LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '7dc4ca0db7e4bcd8fb5e8feb82f96a110b28ae07e839e18e67') LIMIT 1[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '7ef1014995dfdcde58187c3ba17ed1993bc2780860e9aadceb') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '84a66f8d2571d1f6e849c4d043d05ab57811e8774d759fccb9') LIMIT 1[0m
+  [4;35;1mUser Load (0.8ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '29cc479b417b42825f07df09abcb2793153393f09e8198277a') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '0429dc49a5422a482dd97cb526fbccf0bfe5a13fbad3b443d8') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '7ba57c3c0c47067936c2c36abfcd2199aea17d23ae63399fcc') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '096ef557d44900a1b79a75c553d130684804f50c0b3b5f4274') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '5a98623041f78605f8d9cb9e15a29c761003e10d31c6e7375d') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'd0a5f3090afa3c77c3d85bf25017da4d8b52306b3ba251d57c') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '796de0ade9aed77946f9eecd886516140e367a058905b461d6') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'dc19f296a53ea3229d7f94b90045f706371ccc6f3b0281b252') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '31e42f1cbdba3b688b12656588a2c4cbef445a354318b850b2') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'b13ef5ec7a39548af5867bb22079afcc878cd67bc5726af5b1') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '43d75ab68138c8e119f84d4573413c106df99406ef407fd742') LIMIT 1[0m
+  [4;36;1mUser Load (1.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '5a9cdb202bcf09c51e728a910a688defa85923122d6ab0b79d') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'd4de602e7fd55b58245b66e273df1e75f715c49e42b442d7bb') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '7061292e597f46e32b3743d44016f0454de6c50a0959f96b56') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '7a93dc2fd82dbd7e00d700cea10515ce1f2c7d069ab8c5371f') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'e98dc74c3f847737ca1926febe75e246bee1d33b02e332ebac') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '4bffef4ad542c8721a4c67c30e4083643a384007b2476df59e') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'ce88af1b6257aaf5557c2dece271237b00bb0acab2335bd6d3') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'eb2aa6e925462ed29bf306517535113df9a990e9ddda533c49') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'f912b1797f97b66beea75b0a4dfecc97bee38f583231030ac6') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '61444225b2ea38f48c7e4e1c78c88f3112cc12d8a842e969ac') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'fad968c7d05c07dc9a2c1a33f3bd2b0ae9b417934322b8cf62') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '784df008a897d7254a2ffdc8d82b399040ae88f35a775226a8') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'c458dd5268095c4ec8946e5cce81a15210d8898b1358f30404') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '7224c15f52b9f01eb74ffbe7d9876e35472c647762ee926d39') LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'e7f465b08fbb90efc27a30241b3755f0df19a0c04974edd02e') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'ccc676715fb84a02b1b0e924d28be880fbea9956ceee8f4989') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'e066d63850ae6948e6addab5a8b41f2dacf27253bcc32f433b') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '986e1d2c5200b4829777762f6be258342e61d574159d2c6c77') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'cc188ac9ca5e51943a93021802246ab8f3bb834b5a9046bf9e') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '4210e18ecc2cda6951dc6d7b9800e13aa7929b2c3a668df8f8') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'f8188a7774029243a99860292ae4923162f10aeb99865253c8') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '85d5f569941c81868de44e3d012501f7c99272a700c2e8e146') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '6ec59114165c26cf19fbcb116ab6090a32df4f939c7270f950') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '61ecdb968547be450bc38e29aab3e935b9145f70f4cc3c2d3f') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'f2fd2523285228fbdb624f9d1616f7f8803942a64674456ddd') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '65a3141acdcbf665896ae60a88d73805783169618be21e0f4a') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'a7732b1215da1f1c0b3367484b219f8d711c6f3277ddbcb5ad') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '43a66a680013d7c5cd1349b49426c4366245cf4da9cb6fffad') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'e42c79afe1bbc7bd624435bddb1a650a767369554dbba27bbd') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '9927a91fa90d18a07ee05de1beb535ae074a5bbef67dae182b') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '9b55f016638fd818aeb4a6e3bb27690a7d6db32b284087d83d') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'd336da463d4fb44c562bed8924dedb7b54927a180518170b35') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '4642db64341b2175829650c20dfb29ad0ac18f56cb5606ed91') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '8b93c63566c3e3ef7415916143eaf628a66f91ab1b39a9a86e') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'af6d301bf2b6ebf89b9eb4b8d0b4855d083c1bae4cb7b49c9a') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '1cef11445a4a5dfa29633099d7a8e3ce3cc518b286916b6ba6') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '17c9f54192872fae211becddbe1ee29edf8f23a6e583dac1f1') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '031fd105656ae60d4020efba849787a7fccf8f66422489bcfd') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'fa0cea36e4e1e1dd134a540def226e651221d087e380698974') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'dec7114a46b289f1ae357e82315c1f6ed97ecf50471298ea52') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '0d6138da79753c43862437a2b0f1e6fd232f5565fe7eec3090') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'd401cb5cdf7503667fb3cee121fe72489ea23726102157bd53') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '51a23f4eba2247cd91bdce11bc9884103898b0b5b062d47ebb') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'e96a194d8ca55c68403dedd1e8f802e18418f07c676cf9cc62') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '80a5b0e1a4d01db6489d0329db32b05749f8be9ba98152b49b') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '167376c8c6eef352986ec6a0ff2fcf72fe809d339002249c70') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '6e8ee3bbe8369982b7a43fadb231054f26b2708071ccf72e5b') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'd61e47df1b66884ffd77d86b0cda5594ec980a34c8e02e8d5a') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '2abb88fd9199cb234aca8257c8e7be5a28b37905585d6ed596') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '83d89aae046aa38e69d3dda21a178b84d32eb9223dc35181a4') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'a96cb8fca34f80618de5298c3102092d8ecb2ed38f0dad5256') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'f867ffac0aa58775d51c1a092c19f1e92c185daf4fe152ad9b') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '93014764d193180b62e6b43e3692c12a6cd7986e8257861fe1') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '803e92c420adb543ddf2a5b2f9cce109fe815e509bf1173a44') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '7f801c5b98ce979cba6b3b0e3e74813da5f7605dc319506843') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'cf4c7ee8cf60053164670980b2b6dc5fe82d2626d2ee92d7fe') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'c5d579d9c31c469ff87e506b278d069753735bcba2a4f6a782') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '8737bb8f5e3b8374b122f4f880bbf8051bc475b87a00a23fe9') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '005ca640682f9345ba51c15463ad59bd9fc75f6fa42de6d150') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '81f006931ec760b46d9dcad428fa9ff291f6c1184fc22c62c4') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '971cdc1927c3927364aa8364dd8d2ee9cfd9fc7d9b2aea3751') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '20e3b1d9f8e574a3f2fed924fed667b4ddb6e9565bf35c55af') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'd838bdf6aca4e5ef9915be045ff6a0ba706109497628646ae8') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '21dfe86761e985fc763cd7b6a20177f0aa94664c62188e122a') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '384718123ef2e458285a984c576190b3a01ed18260f1b4578a') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '8f51ce863504f2fff99944afdde7789ac10649a5c3462eb6e6') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'a078cc446a57ff4e7328b50828a96ca899baf62280a65f5229') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'c09c69d96e36c001c9ae6d0c885999eabf941b8b4470aab782') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '84be4e611b2156f46d84b75e201694b34ccc7e9403ce2b2c0c') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'c4442668b6be38537472d79358e3f0689947dddf4df3684cf8') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '83a494dbd18310c605220bea8fdbbb6a88a69705e87eabb9b6') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '0307993fa892ff5885aa595ff2e533bd6b30f6b0bf271a1f48') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'ef71ba06ed8b08ee524eefb18a33044828efca0b5e8b469391') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '13016dc5779b250163bd5f609c4de7ded698f2516a004b541f') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'e2d7b518b0cb9e0a3a71be476c50a2727541dea45edcaf96e4') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '400e917125d0a4826676638c53cfad51c3a5fd83896a9f3f07') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '1673f888a59c2177e686c04a845171dafde55f4f3e2dd7ab26') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '6fa0e958f70269b3e4b5ee36ca2258dcef527e822ab352467b') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '5733cf5f7d329758bd7e9d2778ca8e2c1b972664ae7231ae6f') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'fe5b15211feed75370eb22e2eea2d85aa718ac44066834d2b3') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '3fe36f0926a7f6ba1b30dc70aa584e84f59a808060ec7bd4e4') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'bf3056663b94f7c862692747fe63ddf639b9d6b55c44130db8') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '025b115ffe6608143bac8f4e333347e72d39d36a1fbf093297') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '48b149a6aa8ddec46b35c062386c8d47361ad8a1c6f90921ce') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'b1179b49343fd45f0db1c4f166fd007946fccbdbbe1c6012ea') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'd6b6a126fd1095bbf02e750d467528f3f52b9aa74243f42e73') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '6c228a79fef344f582598bfad11d5ae7c892f9610d97a62b71') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'a830ac1b2272e5bf0309263e51414f9d3c6579fd02497ef66c') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'ff725ff530366b74d4d4bd195b970c33447877cb9cea4883b4') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'd8809777cfeec1b605649d7f1a7f79ed3b48d7581ba66b5556') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '5778d796cd78c2474f604f3146e41c1d4150023efbcc147505') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '9856c46363f3d9191d15ea97f17e0d3ddb33cd5f5089c27d3d') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '4d4b3c42d521a25110c9fd12dd856adf5dbbd6bc370c618d23') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '74b1639ae753f84f73ad34fe571f4a4083150dfcf5d4a44f1f') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '19f1fa08adbdb04b8de70f139baa7850aec7586039f5067637') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '7020cfcd0bb8c80532aaa785a0a5b29491d03f2580d02b7d5a') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '476c148311ba17413514bc073ef25d48ea1fde6b7396b09dbb') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'c9a8ba25363a2ddaa060b66a4c72bd53791a3a1abf46cc9c12') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '87e7c930a132af5cd9bd9faf9fa38f1a77ace1764e274a140a') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'f6c4848652b579dcfe43cb793ad4c75ed4ae960ac8e2561e51') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '4630658b5534d07bcea93f75166ddae8059ff32275cb1a51c8') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '6e4cbb05d4904ce2608b05a199c0dfc46990f3ec67c8c79d21') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'affe77933d244c5cb5abbc88cfb4fd0555cac860305483c94d') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '08ead765decca4585012d7c08993b154ba6d47d9d81e36a320') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '0a28866ab9e7a6cb1f1573813d09576c01019db1a69cc55ddd') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'df4e64763e76908e7cfd58b689e27296bc02cb704ebc099c1b') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '287ea5a5c5e6756359c26fa7a17100a7ecabec10053a097abd') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'b2bcc78623f6e1de1f58b30b722df43d95cd402bdd3813b6a1') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '9680022a6a20381300aa265dd07196735a43498e9ae160ba54') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '0bbb5b364fb6e9ed71878301fdacb7ea72ffad242a19128719') LIMIT 1[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '04bbc9b730054327e9ff3ee896b67613b84de438a11b2722c5') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'a63756016a5b00bef4d64fd445f1b861b4f47ea6a50053a462') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '249e57b42506c371c5a6192dab077a175cf54a307d8bff0ea9') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'd92621ba5f99dcee3b5869753bb02283230420381b18103a3c') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'acg-support@montana.edu') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'sysadmin') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '0920be5cfe31845aa5783b97f7f5997beaf7f37ebc7035a158') LIMIT 1[0m
+  [4;35;1mUser Create (0.6ms)[0m   [0mINSERT INTO "users" ("last_request_at", "created_at", "crypted_password", "created_on", "updated_at", "failed_login_count", "current_login_ip", "updated_on", "password_salt", "current_login_at", "last_name", "persistence_token", "login_count", "last_login_ip", "login", "last_login_at", "email", "first_name") VALUES('2009-07-28 22:04:26', '2009-07-28 22:04:26', '05e20daa44c0041e47b217f7fc5e8a1dd09b4565e65ef29dee548516b9afc9da47ead15a8856372beba00b3152584c233b08c3e673d7a6c264b0f1592da5cc1a', '2009-07-28 22:04:26', '2009-07-28 22:04:26', 0, '0.0.0.0', '2009-07-28 22:04:26', 'axTjS9FxtPCkqh34yIR9', '2009-07-28 22:04:26', 'Administrator', '0920be5cfe31845aa5783b97f7f5997beaf7f37ebc7035a1585a575c228fe0ff1f7ef632dc68d6a1889c34338ef57679f6603c6cd827ae79dec1da01fff16ab3', 1, NULL, 'sysadmin', NULL, 'acg-support@montana.edu', 'System')[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'dummy@montana.edu') LIMIT 1[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'dummy') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '22dbd09b2594ae8d34b2c970d6d9ae4dcbb2a77772291ed268') LIMIT 1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = '0920be5cfe31845aa5783b97f7f5997beaf7f37ebc7035a1585a575c228fe0ff1f7ef632dc68d6a1889c34338ef57679f6603c6cd827ae79dec1da01fff16ab3') LIMIT 1[0m
+  [4;36;1mUser Update (0.3ms)[0m   [0;1mUPDATE "users" SET "updated_at" = '2009-07-28 22:04:26', "last_request_at" = '2009-07-28 22:04:26', "updated_on" = '2009-07-28 22:04:26' WHERE "id" = 1[0m
+  [4;35;1mUser Create (0.2ms)[0m   [0mINSERT INTO "users" ("last_request_at", "created_at", "crypted_password", "created_on", "updated_at", "failed_login_count", "current_login_ip", "updated_on", "password_salt", "current_login_at", "last_name", "persistence_token", "login_count", "last_login_ip", "login", "last_login_at", "email", "first_name") VALUES(NULL, '2009-07-28 22:04:26', '9b8ef2751e280be670ca29ad13dcfe9de869868014b6a67270c83d2523184c1394d6015e8edb91d59fe52df8f84e727ae6e34748d45e416c66f967f9663db241', '2009-07-28 22:04:26', '2009-07-28 22:04:26', 0, NULL, '2009-07-28 22:04:26', '7U_yAmDUiBeIdl7xJyXO', NULL, 'User', '22dbd09b2594ae8d34b2c970d6d9ae4dcbb2a77772291ed268e97b82e8fba7b9da01700e646b81e3296affcb18cf67425e673360a13e08d2a54f3a86a1720b3f', 0, NULL, 'dummy', NULL, 'dummy@montana.edu', 'Dummy')[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '26607491084fdc292766daa1c5b321acbf8d0a96d59028a1b8') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '650984efd0b8f2037706c67a781f588547184b67a8db666d43') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '3a19e64f26a7ae3a6d6402afd85262043652afed72a751e8f3') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '1cc62f2c6f7cca8dae75971aed9dd48d21120939cc31c0694b') LIMIT 1[0m
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '77cc74a632926db6a8e9071f1ea1fb00ed5337fea54c44dcc8') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'robbie') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'd64a7d3d60ebfa5d43ab60a8265e14c212f52a326161d19a3a') LIMIT 1[0m

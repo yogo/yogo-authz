@@ -1,0 +1,7 @@
+users:
+  adapter: sqlite3
+  database: db/yogo_authz.sqlite3
+
+sqlite3:
+  adapter: sqlite3
+  database: vendor/plugins/yogo_authz/spec/db/yogo_authz.sqlite3
