@@ -11,8 +11,8 @@ module GroupSpec
     #   puts "setting stuff up before each test"
     # end
 
-    it "shoudl do something" do
-      group = Group.create(:name => "Test Group")
+    it "should do something" do
+      group = YogoAuthz::Group.create(:name => "Test Group")
       group.name.should == "Test Group"
     end
 
@@ -21,7 +21,7 @@ module GroupSpec
     end
     
     it "should not save" do
-      group = Group.new
+      group = YogoAuthz::Group.new
       group.valid?.should == false
     end
     
