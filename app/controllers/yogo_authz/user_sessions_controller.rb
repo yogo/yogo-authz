@@ -9,7 +9,7 @@ class YogoAuthz::UserSessionsController < ApplicationController
   end
   
   def create
-    @user_session = YogoAuthz::UserSession.new(params[:user_session])
+    @user_session = YogoAuthz::UserSession.new(params[:yogo_authz_user_session])
     if @user_session.save
       flash[:notice] = "Login successful!"
       redirect_back_or_default account_url
