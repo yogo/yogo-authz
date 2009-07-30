@@ -1,32 +1,56 @@
-= YogoAuthz
+= YogoAuthz - An Authentication and Authorization component of the Yogo Data Management Toolkit
 === DESCRIPTION
+
+This a component of the Yogo Data Management Toolkit. It has been developed as a rails engine to keep 
+the implementation optional and separate from data management components. It provides authentication
+with the help of Authlogic, and authorization. Default controller, models, and views are provided
+with this component, but all may be overwritten in a Rails app.
+
+The goals of this component are to provide a fleiable and customizable authentication and 
+authorization system that is implemented separately from the main app. A minimal number of changes
+to a rails app are needed to fully utilize YogoAuthz.
 
 == INSTALL
 Introduction goes here.
 This plugin/engine requires the following gems to be installed:
 
+=== Required Gems
 * authlogic -- http://github.com/binarylogic/authlogic/tree/master
-
-=== DataMapper Plugins
-
 * dm-core
 * dm-validations
 * dm-timestamps
 * dm-validations
 * dm_is_nested-set
 
-While Yogo uses Perseverse to store scientific data, this plugin stores it's information 
-in a relational database.
-
-A database with the identify of users needs to be configured in the database.yml file.
+This component provides controllers, views, and models
 
 
+To use this component
 
+A rake task is provided to create the tables in the database and create a sysadmin user and password.
+
+rake yogo_authz:load_default_info
+
+Include YogoAuthz::AuthenticatedSystem and YogoAuthz::AuthorizationSystem in the application_controller.rb
+
+For every controller you want protected, add
+require_authorization
+
+
+All components of this can be overwritten in the main app. That is just the way Ruby works.
 
 == RESOURCES
 
 == TODO
 * Make Authlogic work with DataMapper
+* Write more tests
+* Decide where to redirect when authorization fails
+* Options to pass into require_authorization
+* Develop a model permissions component
+* Create initialization hooks
+* Add Generators to create
+* Clean up the views
+* Meditate on the scoping of the models.
 
 == LICENSE
 
