@@ -2,3 +2,4 @@
 spec/db/*.sqlite3
 spec/*.log
 rdoc/*
+pkg/*
