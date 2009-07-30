@@ -14,6 +14,8 @@ module YogoAuthz
 
     module AuthorizationSystemClassMethods
     
+      # This is where initialzation could be, should be happening.
+      # Baised on options passed in, decide how to do it
       def require_authorization(options = {})
         options.assert_valid_keys(:if, :unless, :only_if_logged_in?, :except, :redirect_url, :render_url, :status)
       

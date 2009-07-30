@@ -4,7 +4,7 @@ module YogoAuthz
   private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
-      @current_user_session = UserSession.find
+      @current_user_session = YogoAuthz::UserSession.find
     end
   
     def current_user
@@ -15,7 +15,7 @@ module YogoAuthz
     def current_web_user
       if current_user
         return @current_web_user if defined?(@current_web_user)
-        @current_web_user = WebUser.get(current_user.id)
+        @current_web_user = YogoAuthz::WebUser.get(current_user.id)
       end
     end
   
