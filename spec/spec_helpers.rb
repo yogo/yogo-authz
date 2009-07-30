@@ -18,7 +18,5 @@ DataMapper.setup(:default, databases[ENV["DB"] || "users"])
 DataMapper.logger = Rails.logger
 
 # This is the migration stuff for DataMapper
-puts plugin_spec_dir
 Dir[File.join(plugin_spec_dir, "..", "app", "models", "yogo_authz", "*.rb")].each{ |f| require f }
 DataMapper.auto_migrate!
-
