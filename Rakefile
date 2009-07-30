@@ -2,6 +2,8 @@ require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
 require 'spec/rake/spectask'
+require 'rubygems'
+require 'rubygems/gem_runner'
 
 desc 'Default: run specs.'
 task :default => :spec
@@ -26,5 +28,19 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.title    = 'YogoAuthz'
   rdoc.options << '--line-numbers' << '--inline-source'
   rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('app/**/*.rb')
   rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name    = "yogo_authz"
+    gem.summary = "Autorization and Authenication for the yogo toolkit."
+    gem.email   = "yogo@montana.edu"
+    gem.homepage = "http://neurosys.msu.montana.edu/Yogo/index.html"
+    gem.authors = "Team Yogo"
+  end
+rescue LoadError
+  puts "Jeweler (or a dependency) not available."
 end
