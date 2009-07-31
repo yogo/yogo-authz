@@ -22,15 +22,18 @@ namespace :yogo_authz do
     user = YogoAuthz::WebUser.first(:login => 'sysadmin')
     
     default_group = YogoAuthz::Group.create(:name => 'default')
-    g = YogoAuthz::Group.create(:name => 'sysadmin',
-                 :description => 'User group with full administrator priviliges.')
-    g.move(:into => default_group)
-    YogoAuthz::Group.create(:name        => 'committee member',
-                 :description => 'committee member')
-    g.move(:into => default_group)
-    YogoAuthz::Group.create(:name        => 'administrator',
-                 :description => 'administrator')
-    g.move(:into => default_group)
+    YogoAuthz::Group.create(:parent      => default_group, 
+                            :name        => 'sysadmin',
+                            :description => 'User group with full administrator priviliges.')
+                            
+    YogoAuthz::Group.create(:parent      => default_group, 
+                            :name        => 'committee member',
+                            :description => 'committee member')
+                            
+
+    YogoAuthz::Group.create(:parent      => default_group, 
+                            :name        => 'administrator',
+                            :description => 'administrator')
     
     YogoAuthz::Membership.create(:web_user => user, 
                       :group => YogoAuthz::Group.first(:name => 'sysadmin'))

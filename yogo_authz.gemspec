@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Team Yogo"]
-  s.date = %q{2009-07-30}
+  s.date = %q{2009-07-31}
   s.email = %q{yogo@montana.edu}
   s.extra_rdoc_files = [
     "README"
@@ -65,7 +65,8 @@ Gem::Specification.new do |s|
      "tasks/yogo_authz_tasks.rake",
      "test/test_helper.rb",
      "test/yogo_authz_test.rb",
-     "uninstall.rb"
+     "uninstall.rb",
+     "yogo_authz.gemspec"
   ]
   s.homepage = %q{http://neurosys.msu.montana.edu/Yogo/index.html}
   s.rdoc_options = ["--charset=UTF-8"]

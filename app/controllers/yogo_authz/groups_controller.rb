@@ -45,7 +45,7 @@ class YogoAuthz::GroupsController < ApplicationController
     
     respond_to do |format|
       if @group.save
-        @group.move(:into => Group.get(parent_id)) if parent_id > 0
+        @group.move(:into => YogoAuthz::Group.get(parent_id)) if parent_id > 0
         flash[:notice] = "Group was successfully created."
         format.html { redirect_to(group_url(@group.id)) }
       else

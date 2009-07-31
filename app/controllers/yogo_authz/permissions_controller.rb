@@ -4,6 +4,7 @@
 # File: permissions_controller.rb
 # The Permissions Controller is used grant permissions to groups.
 class YogoAuthz::PermissionsController < ApplicationController
+  require_authorization
   before_filter :set_group
   
   

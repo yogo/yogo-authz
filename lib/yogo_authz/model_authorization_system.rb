@@ -20,6 +20,10 @@ module YogoAuthz
     
     module InstanceMethods
       
+      def permit?
+        
+      end
+      
     end
     
   end

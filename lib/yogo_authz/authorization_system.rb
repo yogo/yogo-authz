@@ -9,6 +9,8 @@ module YogoAuthz
     def self.included(base)
       base.send :include, AuthorizationSystemInstanceMethods
       base.send :extend, AuthorizationSystemClassMethods
+      
+      # base.send :auth_requirements=, []
     
     end
 
@@ -16,15 +18,28 @@ module YogoAuthz
     
       # This is where initialzation could be, should be happening.
       # Baised on options passed in, decide how to do it
+      #
+      # Example Usage
+      #
+      #   authorize_default
+      #   authorize_group
+      #   authorize_logged_in
+      
       def require_authorization(options = {})
-        options.assert_valid_keys(:if, :unless, :only_if_logged_in?, :except, :redirect_url, :render_url, :status)
+        options.assert_valid_keys(:if, :unless, :only, :only_if_logged_in?, :except, :redirect_url, :render_url, :status)
       
         unless @before_filter_declaired ||= false
           @before_filter_declared = true
           before_filter :check_authorization
         end
       
+        # self.auth_requirements||=[]
+        # self.auth_requirements << {:options  => options}
       end
+    
+    def method_missing(method_id, *arguments)
+      super
+    end
     
     end # module AuthorizationSystemClassMethods
   

@@ -11,7 +11,13 @@ authorization system that is implemented separately from the main app. A minimal
 to a rails app are needed to fully utilize YogoAuthz.
 
 == INSTALL
-Introduction goes here.
+Due to apparent limitations in the way Rails loads engines, YogoAuthz currently only works as a plugin.
+
+The current recommended way to install this plugin is as a git submodule. This link shows a great
+example of how to install rails plugins as git submodules:
+
+http://github.com/guides/using-git-submodules-to-track-plugins
+
 This plugin/engine requires the following gems to be installed:
 
 === Required Gems
@@ -23,9 +29,6 @@ This plugin/engine requires the following gems to be installed:
 * dm_is_nested-set
 
 This component provides controllers, views, and models
-
-
-To use this component
 
 A rake task is provided to create the tables in the database and create a sysadmin user and password.
 
@@ -51,6 +54,7 @@ All components of this can be overwritten in the main app. That is just the way 
 * Add Generators to create
 * Clean up the views
 * Meditate on the scoping of the models.
+* Add user controller/action permissions. - ?
 
 == LICENSE
 

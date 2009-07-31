@@ -30,8 +30,10 @@ module GroupsControllerSpec
         flash[:notice].should == "Group was successfully created."
       end
       
-      it "should redirect somewhere" 
-      
+      it "should redirect somewhere" do
+        post :create, :group => {"name" => "test", "parent_id" => ''}
+        response.should redirect_to(group_url(@group.id))
+      end
     end
   end
   
