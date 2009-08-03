@@ -10,11 +10,31 @@ module YogoAuthz
       base.send :include, AuthorizationSystemInstanceMethods
       base.send :extend, AuthorizationSystemClassMethods
       
-      # base.send :auth_requirements=, []
+      base.send :class_inheritable_array, :auth_requirements
+      base.send :auth_requirements=, []
+    
+      # base.send :require_authorization
     
     end
 
     module AuthorizationSystemClassMethods
+    
+      # ouch ouch ouch 
+      # This replaces the method defined in extlib, because we want the one
+      def class_inheritable_reader(*syms) #nodoc
+        syms.each do |sym|
+          next if sym.is_a?(Hash)
+          class_eval <<-EOS
+            def self.#{sym}                        # def self.before_add_for_comments
+              read_inheritable_attribute(:#{sym})  #   read_inheritable_attribute(:before_add_for_comments)
+            end                                    # end
+                                                   #
+            def #{sym}                             # def before_add_for_comments
+              self.class.#{sym}                    #   self.class.before_add_for_comments
+            end                                    # end
+          EOS
+        end
+      end
     
       # This is where initialzation could be, should be happening.
       # Baised on options passed in, decide how to do it
@@ -25,7 +45,7 @@ module YogoAuthz
       #   authorize_group
       #   authorize_logged_in
       
-      def require_authorization(options = {})
+      def require_authorization(type, options = {})
         options.assert_valid_keys(:if, :unless, :only, :only_if_logged_in?, :except, :redirect_url, :render_url, :status)
       
         unless @before_filter_declaired ||= false
@@ -33,12 +53,22 @@ module YogoAuthz
           before_filter :check_authorization
         end
       
-        # self.auth_requirements||=[]
-        # self.auth_requirements << {:options  => options}
+        self.auth_requirements ||=[]
+        self.auth_requirements << {:type => type, :options  => options}
       end
     
     def method_missing(method_id, *arguments)
-      super
+      method_type = method_id.to_s.match(/^(forbid|wants)_([_a-zA-Z]\w*)$/)
+      super if method_type.nil?
+      require_authorization(method_type[1], *arguments)
+    end
+    
+    def forbid_handler(*arguements)
+      logger.debug { "You shouldn't use forbid methods.\nDeny first, allow later." }
+    end
+    
+    def reset_auth_requirements!
+      self.auth_requirements.clear
     end
     
     end # module AuthorizationSystemClassMethods
@@ -51,7 +81,7 @@ module YogoAuthz
       def authorization_denied
         store_location
         flash[:notice] = "You've been denied."
-        redirect_to '/users'
+        redirect_to '/'
         return false
       end
     
@@ -61,6 +91,9 @@ module YogoAuthz
       end
     
       def check_authorization
+        
+        return authorization_denied if current_web_user.nil?
+        
         if controller_permissions.length.eql? 0
           authorization_denied
         else
