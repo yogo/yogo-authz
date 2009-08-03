@@ -4,8 +4,9 @@
 # File: memberships_controller.rb
 # The Memberships Controller is used to manage what groups a user belongs to.
 class YogoAuthz::MembershipsController < ApplicationController
-  before_filter :set_user
+  unloadable
   
+  before_filter :set_user
   
   def show
     @user_memberships = @web_user.memberships

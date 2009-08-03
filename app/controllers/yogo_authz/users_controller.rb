@@ -4,6 +4,8 @@
 # File: users_controller.rb
 # The Users Controller is used to create and destroy users in the yogo system.
 class YogoAuthz::UsersController < ApplicationController
+  unloadable
+  
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
   

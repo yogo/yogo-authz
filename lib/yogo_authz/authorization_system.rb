@@ -13,7 +13,9 @@ module YogoAuthz
       base.send :class_inheritable_array, :auth_requirements
       base.send :auth_requirements=, []
     
-      # base.send :require_authorization
+      base.send :hide_action, :auth_requirements, :auth_requirements=
+    
+      base.send :wants_logged_in
     
     end
 
@@ -21,6 +23,7 @@ module YogoAuthz
     
       # ouch ouch ouch 
       # This replaces the method defined in extlib, because we want the one
+      # defined in inheritable_attributes.rb
       def class_inheritable_reader(*syms) #nodoc
         syms.each do |sym|
           next if sym.is_a?(Hash)
@@ -93,11 +96,12 @@ module YogoAuthz
       def check_authorization
         
         return authorization_denied if current_web_user.nil?
+        return authorized if admin_groups.length > 0
         
         if controller_permissions.length.eql? 0
-          authorization_denied
+         return authorization_denied
         else
-          authorized
+          return authorized
         end
       end
     
@@ -117,6 +121,10 @@ module YogoAuthz
         }
       
         return permissions.flatten
+      end
+    
+      def admin_groups
+        current_web_user.groups.all(:sysadmin => true)
       end
     
     end # module AuthroizationSystemInstanceMethod

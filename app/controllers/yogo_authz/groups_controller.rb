@@ -4,15 +4,16 @@
 # File: groups_controller.rb
 # The Groups Controller is used to create and destroy groups used in the yogo system.
 class YogoAuthz::GroupsController < ApplicationController
-
-  # require_authorization
+  unloadable
   
   def index
     @groups = YogoAuthz::Group.all
+   
+   
     
     respond_to do |format|
-      format.html
-    end  
+         format.html
+       end  
   end
   
   def show

@@ -11,7 +11,7 @@ class YogoAuthz::Group
   property :id,           Serial
   property :name,         String, :nullable => false, :unique => true
   property :description,  String
-  property :parent_id,    Integer
+  property :sysadmin,     Boolean, :nullable => false, :default => false
   
   property :created_at, DateTime
   property :created_on, Date

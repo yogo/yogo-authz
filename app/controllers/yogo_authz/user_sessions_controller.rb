@@ -1,8 +1,10 @@
 class YogoAuthz::UserSessionsController < ApplicationController
-  # self.append_view_path(File.join(File.dirname(__FILE__), '..', 'views'))
+  unloadable
   
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => :destroy
+  
+  # wants_not_logged_in :for => [:new, :create]
   
   def new
     @user_session = YogoAuthz::UserSession.new
