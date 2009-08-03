@@ -6,13 +6,14 @@
 class YogoAuthz::UsersController < ApplicationController
   unloadable
   
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
+  # before_filter :require_no_user, :only => [:new, :create]
+  # before_filter :require_user, :only => [:show, :edit, :update]
   
   # require_authorization
   
   def index
     @users = YogoAuthz::WebUser.all
+    
   end
   
   def new
@@ -20,7 +21,7 @@ class YogoAuthz::UsersController < ApplicationController
   end
   
   def create
-    @user = YogoAuthz::User.new(params[:user])
+    @user = YogoAuthz::User.new(params[:yogo_authz_user])
     if @user.save
       flash[:notice] = "Account registered!"
       redirect_back_or_default account_url
@@ -30,16 +31,16 @@ class YogoAuthz::UsersController < ApplicationController
   end
   
   def show
-    @user = @current_user
+    @user =YogoAuthz::User.find(params[:id])
   end
 
   def edit
-    @user = @current_user
+    @user =YogoAuthz::User.find(params[:id])
   end
   
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(params[:yogo_authz_user])
       flash[:notice] = "Account updated!"
       redirect_to account_url
     else

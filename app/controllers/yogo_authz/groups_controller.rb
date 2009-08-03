@@ -41,8 +41,8 @@ class YogoAuthz::GroupsController < ApplicationController
   end
   
   def create
-    parent_id = params[:group][:parent_id].to_i
-    @group = YogoAuthz::Group.new(params[:group])
+    parent_id = params[:yogo_authz_group][:parent_id].to_i
+    @group = YogoAuthz::Group.new(params[:yogo_authz_group])
     
     respond_to do |format|
       if @group.save
@@ -56,7 +56,7 @@ class YogoAuthz::GroupsController < ApplicationController
   end
   
   def update
-    parent_id = params[:group][:parent_id]
+    parent_id = params[:yogo_authz_group][:parent_id]
     @group = YogoAuthz::Group.get(params[:id])
     
     if !parent_id.empty? && @group.parent_id != parent_id.to_i
@@ -64,7 +64,7 @@ class YogoAuthz::GroupsController < ApplicationController
     end
     
     respond_to do |format|
-      if @group.update(params[:group])
+      if @group.update(params[:yogo_authz_group])
         flash[:notice] = "Group was successfully updated."
         format.html { redirect_to(group_url(@group.id)) }
       else

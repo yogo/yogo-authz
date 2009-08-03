@@ -11,8 +11,13 @@
 </p>
 
 <p>
+  <%= f.label(:sysadmin, "Sysadmin?") %>
+  <%= f.check_box(:sysadmin) %>
+</p>
+
+<p>
   <%= f.label(:parent_id, "Parent Group") %><br />
   <%= f.select(:parent_id, 
-               Group.all.collect{|g| [g.name.capitalize, g.id]}, 
+               YogoAuthz::Group.all.collect{|g| [g.name.capitalize, g.id]}, 
               :include_blank => true) %>
 </p>

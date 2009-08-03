@@ -68,6 +68,7 @@ module YogoAuthz
     
     def forbid_handler(*arguements)
       logger.debug { "You shouldn't use forbid methods.\nDeny first, allow later." }
+      # But isn't this fun.
     end
     
     def reset_auth_requirements!
