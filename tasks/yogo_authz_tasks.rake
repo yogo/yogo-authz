@@ -22,9 +22,11 @@ namespace :yogo_authz do
     user = YogoAuthz::WebUser.first(:login => 'sysadmin')
     
     default_group = YogoAuthz::Group.create(:name => 'default')
+    
     YogoAuthz::Group.create(:parent      => default_group, 
                             :name        => 'sysadmin',
-                            :description => 'User group with full administrator priviliges.')
+                            :description => 'User group with full administrator priviliges.',
+                            :sysadmin    => true)
                             
     YogoAuthz::Group.create(:parent      => default_group, 
                             :name        => 'committee member',
