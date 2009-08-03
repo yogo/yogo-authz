@@ -1,5 +1,5 @@
 = YogoAuthz - An Authentication and Authorization component of the Yogo Data Management Toolkit
-=== DESCRIPTION
+== DESCRIPTION
 
 This a component of the Yogo Data Management Toolkit. It has been developed as a rails engine to keep 
 the implementation optional and separate from data management components. It provides authentication
@@ -45,6 +45,7 @@ All components of this can be overwritten in the main app. That is just the way 
 == RESOURCES
 
 == TODO
+* LDAP Support
 * Make Authlogic work with DataMapper
 * Write more tests
 * Decide where to redirect when authorization fails
