@@ -15,7 +15,7 @@ module YogoAuthz
     
       base.send :hide_action, :auth_requirements, :auth_requirements=
     
-      base.send :wants_logged_in
+      # base.send :wants_logged_in
     
     end
 
@@ -49,11 +49,17 @@ module YogoAuthz
       #   authorize_logged_in
       
       def require_authorization(type, options = {})
-        options.assert_valid_keys(:if, :unless, :only, :only_if_logged_in?, :except, :redirect_url, :render_url, :status)
+        options.assert_valid_keys(:if, :unless, :only, :for, :only_if_logged_in?, :except, :redirect_url, :render_url, :status)
       
         unless @before_filter_declaired ||= false
           @before_filter_declared = true
           before_filter :check_authorization
+        end
+      
+        for key in [:only, :except]
+          options.has_key?(key)
+          options[key] = [options[key]] unless Array === options[key]
+          options[key] = options[key].compact.collect{|v| v.to_sym}
         end
       
         self.auth_requirements ||=[]
@@ -63,7 +69,7 @@ module YogoAuthz
     def method_missing(method_id, *arguments)
       method_type = method_id.to_s.match(/^(forbid|wants)_([_a-zA-Z]\w*)$/)
       super if method_type.nil?
-      require_authorization(method_type[1], *arguments)
+      require_authorization(method_type[2], *arguments)
     end
     
     def forbid_handler(*arguements)
@@ -71,9 +77,74 @@ module YogoAuthz
       # But isn't this fun.
     end
     
+    # Returns the action that should be taken
+    def next_authorized_action_for(web_user, params = {}, binding = self.binding)
+      return nil unless Array===self.auth_requirements
+      self.auth_requirements.each do |requirement|
+        type = requirement[:type]
+        options = requirement[:options]
+        
+        if options.has_key?(:only)
+          next unless options[:only].include?( (params[:action]||"index").to_sym )
+        end
+        
+        if options.has_key?(:for)
+          next unless options[:for].include?( (params[:action]||"index").to_sym )
+        end
+        
+        if options.has_key?(:except)
+          next if options[:except].include?( (params[:action]||"index").to_sym )
+        end
+        
+        if options.has_key?(:if)
+          next unless ( String==options[:if] ? eval(options[:if], binding) : options[:if].call(params) )
+        end
+        
+        if options.has_key?(:unless)
+          next if ( String===options[:unless] ? eval(options[:unless], binding) : options[:unless].call(params) )
+        end
+        
+        puts type
+        
+        # values.each{
+                 return { :url => options[:redirect_url], :status => options[:status] } unless 
+                 (web_user and controller_permissions(web_user, params))
+               # } unless (web_user == :false || web_user == false)
+               
+      end
+      return nil
+    end
+    
+    def url_authorized?(web_user, params = {}, binding = self.binding)
+      unless self.next_authorized_action_for(web_user, params, binding)
+        return false
+      end
+      return true
+    end
+    
+    # The heart of the system.
+     # Returns permissions the given user has for the current controller and action
+     #
+     def controller_permissions(web_user = nil, params = {})
+       controller_name = params[:controller]
+       action_name     = params[:action]
+     
+       groups = current_web_user.groups
+     
+       permissions = groups.collect{ |g|
+         g.self_and_ancestors.
+           permissions.all(:controller_name => controller_name,
+                           :action_name     => action_name)
+       }
+     
+       return permissions.flatten
+     end
+    
     def reset_auth_requirements!
       self.auth_requirements.clear
     end
+    
+
     
     end # module AuthorizationSystemClassMethods
   
@@ -81,11 +152,11 @@ module YogoAuthz
     
       protected
     
-      # What to do when the user is denied
+      # What to do when the user is denied?
       def authorization_denied
         store_location
         flash[:notice] = "You've been denied."
-        redirect_to '/'
+        redirect_to new_user_session_url
         return false
       end
     
@@ -95,37 +166,24 @@ module YogoAuthz
       end
     
       def check_authorization
-        
-        return authorization_denied if current_web_user.nil?
-        return authorized if admin_groups.length > 0
-        
-        if controller_permissions.length.eql? 0
-         return authorization_denied
-        else
-          return authorized
-        end
-      end
-    
-      # The heart of the system.
-      # Returns permissions the current user has for the current controller and action
-      #
-      def controller_permissions
-        controller_name = self.class.name
-        action_name     = self.action_name
-      
-        groups = current_web_user.groups
-      
-        permissions = groups.collect{ |g|
-          g.self_and_ancestors.
-            permissions.all(:controller_name => controller_name,
-                            :action_name     => action_name)
-        }
-      
-        return permissions.flatten
+        # return authorization_denied if current_web_user.nil?
+        # return authorized if admin_groups.length > 0
+        return authorization_denied unless self.url_authorized?(params)
+        return authorized
       end
     
       def admin_groups
         current_web_user.groups.all(:sysadmin => true)
+      end
+      
+      def url_authorized?(params = {})
+        params = params.symbolize_keys
+        if params[:controller]
+          base = eval("#{params[:controller]}_controller".classify)
+        else
+          base = self.class
+        end
+        base.url_authorized?(current_web_user, params, binding)  
       end
     
     end # module AuthroizationSystemInstanceMethod

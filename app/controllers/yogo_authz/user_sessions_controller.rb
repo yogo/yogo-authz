@@ -1,10 +1,9 @@
 class YogoAuthz::UserSessionsController < ApplicationController
   unloadable
   
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => :destroy
+  # before_filter :require_no_user, :only => [:new, :create]
+  # before_filter :require_user, :only => :destroy
   
-  # wants_not_logged_in :for => [:new, :create]
   
   def new
     @user_session = YogoAuthz::UserSession.new
