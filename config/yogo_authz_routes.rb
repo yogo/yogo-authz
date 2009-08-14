@@ -9,5 +9,9 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resource :user_session, :controller => "yogo_authz/user_sessions"
+  
+  map.logout '/logout', :controller => 'yogo_authz/user_sessions', :action => 'destroy'
+  map.login '/login', :controller => 'yogo_authz/user_sessions', :action => 'new'
+  
   map.root :controller => "yogo_authz/user_sessions", :action => "new"
 end
