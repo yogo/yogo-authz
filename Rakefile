@@ -40,6 +40,7 @@ begin
     gem.email   = "yogo@montana.edu"
     gem.homepage = "http://neurosys.msu.montana.edu/Yogo/index.html"
     gem.authors = "Team Yogo"
+    gem.add_dependency "authlogic"
   end
 rescue LoadError
   puts "Jeweler (or a dependency) not available."

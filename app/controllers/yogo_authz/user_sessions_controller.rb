@@ -4,8 +4,8 @@ class YogoAuthz::UserSessionsController < ApplicationController
   # before_filter :require_no_user, :only => [:new, :create]
   # before_filter :require_user, :only => :destroy
   
-  require_logged_in :for => :destroy
-  require_not_logged_in :for => [:new, :create]
+  require_user    :for => :destroy
+  require_no_user :for => [:new, :create]
   
   def new
     # debugger

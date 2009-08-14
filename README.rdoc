@@ -22,11 +22,12 @@ This plugin/engine requires the following gems to be installed:
 
 === Required Gems
 * authlogic -- http://github.com/binarylogic/authlogic/tree/master
-* dm-core
+* dm-core, :version ~> '0.10.0'
+* rails_datamapper, :version => '0.10.0'
 * dm-validations
 * dm-timestamps
 * dm-validations
-* dm_is_nested-set
+* dm-is-nested_set
 
 This component provides controllers, views, and models
 

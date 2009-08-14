@@ -6,6 +6,8 @@
 class YogoAuthz::GroupsController < ApplicationController
   unloadable
   
+  require_user
+  
   def index
     @groups = YogoAuthz::Group.all
 

@@ -10,10 +10,10 @@ module YogoAuthz
       base.send :include, AuthorizationSystemInstanceMethods
       base.send :extend, AuthorizationSystemClassMethods
       
-      base.send :class_inheritable_array, :auth_requirements
-      base.send :auth_requirements=, []
+      base.send :class_inheritable_array, :authorization_requirements
+      base.send :authorization_requirements=, []
     
-      base.send :hide_action, :auth_requirements, :auth_requirements=
+      base.send :hide_action, :authorization_requirements, :authorization_requirements=
     
       # base.send :wants_logged_in
     
@@ -46,7 +46,6 @@ module YogoAuthz
       #
       #   authorize_default
       #   authorize_group
-      #   authorize_logged_in
       
       def require_authorization(type, options = {})
         options.assert_valid_keys(:if, :unless, :only, :for, :only_if_logged_in?, :except, :redirect_url, :render_url, :status)
@@ -57,13 +56,14 @@ module YogoAuthz
         end
       
         for key in [:only, :except]
-          options.has_key?(key)
-          options[key] = [options[key]] unless Array === options[key]
-          options[key] = options[key].compact.collect{|v| v.to_sym}
+          if options.has_key?(key)
+            options[key] = [options[key]] unless Array === options[key]
+            options[key] = options[key].compact.collect{|v| v.to_sym}
+          end
         end
       
-        self.auth_requirements ||=[]
-        self.auth_requirements << {:type => type, :options  => options}
+        self.authorization_requirements ||=[]
+        self.authorization_requirements << {:type => type, :options  => options}
       end
     
     def method_missing(method_id, *arguments)
@@ -80,7 +80,7 @@ module YogoAuthz
     # Returns the action that should be taken
     def next_authorized_action_for(web_user, params = {}, binding = self.binding)
       return nil unless Array===self.auth_requirements
-      self.auth_requirements.each do |requirement|
+      self.authorization_requirements.each do |requirement|
         type = requirement[:type]
         options = requirement[:options]
         
@@ -140,8 +140,8 @@ module YogoAuthz
        return permissions.flatten
      end
     
-    def reset_auth_requirements!
-      self.auth_requirements.clear
+    def reset_authorization_requirements!
+      self.authorization_requirements.clear
     end
     
 
