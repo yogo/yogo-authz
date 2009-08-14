@@ -46,4 +46,11 @@ class YogoAuthz::UsersController < ApplicationController
       render :action => :edit
     end
   end
+  
+  def destroy
+    @user = YogoAuthz::User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "User Destroyed"
+    redirect_to users_path
+  end
 end

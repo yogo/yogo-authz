@@ -8,9 +8,7 @@ class YogoAuthz::GroupsController < ApplicationController
   
   def index
     @groups = YogoAuthz::Group.all
-   
-   
-    
+
     respond_to do |format|
          format.html
        end  
