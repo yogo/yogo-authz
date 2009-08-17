@@ -3,9 +3,9 @@ class YogoAuthz::Permission
   include YogoAuthz::ControllerHelpers 
   
   property :id,               Serial
-  property :group_id,         Integer, :index => true
-  property :controller_name,  String, :index => :unique
-  property :action_name,      String, :index => :unique
+  property :group_id,         Integer, :index   => true
+  property :controller_name,  String,  :index   => :unique
+  property :action_name,      String,  :index   => :unique
   
   property :created_at, DateTime
   property :created_on, Date
