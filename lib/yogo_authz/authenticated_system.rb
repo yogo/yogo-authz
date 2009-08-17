@@ -1,3 +1,8 @@
+# Yogo Authorization Module
+# Copyright (c) 2009 Montana State University
+#
+# FILE: web_user.rb
+# Datamapper's view into the Users table.
 module YogoAuthz
   module AuthenticatedSystem
     
@@ -6,43 +11,34 @@ module YogoAuthz
       base.send :include, AuthenticatedSystemInstanceMethods
       base.send :extend, AuthenticatedSystemClassMethods
     
-      base.send :class_inheritable_array, :authenication_requirements
+      base.send :class_inheritable_accessor, :authenication_requirements
       base.send :authenication_requirements=, []
     
-      base.send :hide_action, :authenication_requirements, :authenication_requirements=
+      base.send :class_inheritable_accessor, :declaired_auths
+      base.send :declaired_auths=, false
     
-      base.send :require_authentication
+      base.send :hide_action, 
+                :authenication_requirements, 
+                :authenication_requirements=,
+                :declaired_auths,
+                :declaired_auths=
+    
+      base.send :before_filter, :check_authentication_requirements
+      
+      base.send :helper_method, :logged_in?, :current_user, :current_web_user
     end
     
     module AuthenticatedSystemClassMethods
-      
-      # ouch ouch ouch 
-      # This replaces the method defined in extlib, because we want the one
-      # defined in inheritable_attributes.rb
-      def class_inheritable_reader(*syms) #nodoc
-        syms.each do |sym|
-          next if sym.is_a?(Hash)
-          class_eval <<-EOS
-            def self.#{sym}                        # def self.before_add_for_comments
-              read_inheritable_attribute(:#{sym})  #   read_inheritable_attribute(:before_add_for_comments)
-            end                                    # end
-                                                   #
-            def #{sym}                             # def before_add_for_comments
-              self.class.#{sym}                    #   self.class.before_add_for_comments
-            end                                    # end
-          EOS
-        end
-      end
       
       # 
       # 
       def require_authentication(type = nil, options = {})
         options.assert_valid_keys(:if, :unless, :only, :for, :except)
         
-        unless @before_authentication_filter_declaired ||= false
+        unless self.declaired_auths ||= false
           before_filter :check_authentication_requirements
           filter_parameter_logging :password, :ldap_password
-          @before_authentication_filter_declaired = true
+          self.declaired_auths = true
         end
         
         for key in [:only, :except, :for]
@@ -101,7 +97,13 @@ module YogoAuthz
             end
           else
             # TODO: Implement database checks
-            # We check the database for stuff here.
+            puts params
+            requirement = YogoAuthz::Requirement.first(:controller_name => params[:controller],
+                                                       :action_name     => params[:action])
+                                                       
+            return true            if requirement.nil?
+            return require_user    if requirement.require_user
+            return require_no_user if requirement.require_no_user
             return true
           end
 
