@@ -1,3 +1,8 @@
+# Yogo Authorization Module
+# Copyright (c) 2009 Montana State University
+#
+# FILE: user.rb
+# A User model for the Authlogic to use.
 class YogoAuthz::User < ActiveRecord::Base
   acts_as_authentic do |config|
     config.validate_ldap_login false
@@ -14,6 +19,10 @@ class YogoAuthz::User < ActiveRecord::Base
                 :email       => "#{user_data[:mail][0]}",
                 :first_name  => "#{user_data[:givenname][0]}",
                 :last_name   => "#{user_data[:sn][0]}")
+  end
+  
+  def name
+    "#{first_name} #{last_name}"
   end
   
   private
