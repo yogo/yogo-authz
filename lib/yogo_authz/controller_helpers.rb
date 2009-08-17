@@ -18,8 +18,8 @@ module YogoAuthz
       #
       # TODO: This is ugly. If someone comes up with a better way of finding the controllers
       # please let us know.
-      # TODO: The ActionController:Routing::possible_controllers method is incorrect. It would be nice
-      # if someone pathched it someday.
+      # TODO: The ActionController:Routing::possible_controllers method does not show controllers
+      # from plugins. It would be nice if someone pathched it someday.
       def get_controllers
         paths = $LOAD_PATH.select{ |path| path.match(Rails.root.to_s) }
         paths = paths.select { |path| path.match(/controllers/) }
