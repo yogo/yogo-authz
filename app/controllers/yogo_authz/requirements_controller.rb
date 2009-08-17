@@ -8,6 +8,7 @@
 class YogoAuthz::RequirementsController < ApplicationController
   unloadable
   
+  require_user
   def index
     @controllers = YogoAuthz::Controller.undeclaired
     

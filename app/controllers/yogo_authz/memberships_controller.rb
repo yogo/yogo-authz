@@ -6,6 +6,8 @@
 class YogoAuthz::MembershipsController < ApplicationController
   unloadable
   
+  require_user
+  
   before_filter :set_user
   
   def show

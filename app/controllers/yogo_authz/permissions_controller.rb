@@ -6,6 +6,7 @@
 class YogoAuthz::PermissionsController < ApplicationController
   unloadable
   
+  require_user
   before_filter :set_group
   
   def show
