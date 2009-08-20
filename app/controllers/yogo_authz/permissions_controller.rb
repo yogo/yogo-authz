@@ -7,11 +7,12 @@ class YogoAuthz::PermissionsController < ApplicationController
   unloadable
   
   require_user
+  authorize_group :sysadmin
   before_filter :set_group
   
   def show
     @permissions = @group.permissions
-    @controllers = YogoAuthz::Permission.get_controllers
+    @controllers = YogoAuthz::Controller.undeclaired_authorizations
     
     respond_to do |format|
       format.html

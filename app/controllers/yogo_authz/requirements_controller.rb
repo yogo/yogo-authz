@@ -9,6 +9,8 @@ class YogoAuthz::RequirementsController < ApplicationController
   unloadable
   
   require_user
+  authorize_group :sysadmin
+  
   def index
     @controllers = YogoAuthz::Controller.undeclaired
     

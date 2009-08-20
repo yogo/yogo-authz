@@ -10,9 +10,10 @@ class YogoAuthz::UsersController < ApplicationController
   # before_filter :require_user, :only => [:show, :edit, :update]
   
   require_user
+  authorize_group :sysadmin
   
   def index
-    @users = YogoAuthz::WebUser.all
+    @users = WebUser.all
     
   end
   

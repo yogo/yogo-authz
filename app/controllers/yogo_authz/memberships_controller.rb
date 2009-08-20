@@ -7,6 +7,7 @@ class YogoAuthz::MembershipsController < ApplicationController
   unloadable
   
   require_user
+  authorize_group :sysadmin
   
   before_filter :set_user
   

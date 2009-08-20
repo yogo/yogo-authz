@@ -6,6 +6,7 @@ class YogoAuthz::UserSessionsController < ApplicationController
   
   require_user    :for => :destroy
   require_no_user :for => [:new, :create]
+  # authorize_group :default
   
   def new
     # debugger
