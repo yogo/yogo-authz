@@ -36,7 +36,6 @@ module YogoAuthz
         options.assert_valid_keys(:if, :unless, :only, :for, :except)
         
         unless self.declaired_auths ||= false
-          before_filter :check_authentication_requirements
           filter_parameter_logging :password, :ldap_password
           self.declaired_auths = true
         end
@@ -96,8 +95,6 @@ module YogoAuthz
               return send("#{type}")
             end
           else
-            # TODO: Implement database checks
-            puts params
             requirement = YogoAuthz::Requirement.first(:controller_name => params[:controller],
                                                        :action_name     => params[:action])
                                                        

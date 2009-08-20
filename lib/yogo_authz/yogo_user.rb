@@ -1,3 +1,8 @@
+# Yogo Authorization Module
+# Copyright (c) 2009 Montana State University
+#
+# FILE: yogo_user.rb
+# This module provides properties for a user of a Yogo system.
 module YogoAuthz
   module YogoUser
     
@@ -46,7 +51,6 @@ module YogoAuthz
 
       def has_group?(value)
         all_groups = self.groups.collect{|g| g.self_and_ancestors }.flatten
-        puts all_groups
         !all_groups.select{|gr| gr.name.eql? value.to_s}.empty?
       end
       
