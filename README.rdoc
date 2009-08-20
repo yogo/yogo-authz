@@ -2,13 +2,13 @@
 == DESCRIPTION
 
 This a component of the Yogo Data Management Toolkit. It has been developed as a rails engine to keep 
-the implementation optional and separate from data management components. It provides authentication
-with the help of Authlogic, and authorization. Default controller, models, and views are provided
-with this component, but all may be overwritten in a Rails app.
+the implementation separate from data management components.  It provides authentication,
+with the help of Authlogic, and authorization for a rails application. Default controller, models, and views are provided
+with this component, but may be overwritten in a Rails app.
 
-The goals of this component are to provide a fleiable and customizable authentication and 
+The goals of this component are to provide a flexible and customizable authentication and 
 authorization system that is implemented separately from the main app. A minimal number of changes
-to a rails app are needed to fully utilize YogoAuthz.
+to a rails app are needed to fully utilize yogo-authz.
 
 == INSTALL
 Due to apparent limitations in the way Rails loads engines, YogoAuthz currently only works as a plugin.
@@ -18,30 +18,72 @@ example of how to install rails plugins as git submodules:
 
 http://github.com/guides/using-git-submodules-to-track-plugins
 
-This plugin/engine requires the following gems to be installed:
+This plugin/engine requires the following gems to be installed (many are the same as a yogo app):
 
 === Required Gems
 * authlogic -- http://github.com/binarylogic/authlogic/tree/master
 * dm-core, :version ~> '0.10.0'
-* rails_datamapper, :version => '0.10.0'
+* rails_datamapper, :version ~> '0.10.0'
 * dm-validations
 * dm-timestamps
 * dm-validations
 * dm-is-nested_set
 
-This component provides controllers, views, and models
+=== Optional Gems for LDAP support
+* ruby-net-ldap
+* authlogic_ldap -- http://github.com/robbielamb/authlogic_ldap
+
+
+A file named 'webuser.rb' needs to be created in RAILS_ROOT/app/models and the class needs to have 'is_yogo_user' inside. Associations for your application can be added to this model.
+
+Example:
+    class WebUser
+      is_yogo_user
+      
+      has n, :drops, :child_key => [ :user_id ]
+    end
+    
+  In drop.rb
+    class Drop
+      include DataMapper::Resource
+      
+      property :id, Serial
+      belongs_to :user, :model => 'WebUser'
+    end
+    
+DataMapper should take care of the rest.
+
+This component provides other controllers, views, and models with sensible default permissions.
 
 A rake task is provided to create the tables in the database and create a sysadmin user and password.
 
 rake yogo_authz:load_default_info
 
-Include YogoAuthz::AuthenticatedSystem and YogoAuthz::AuthorizationSystem in the application_controller.rb
+Include YogoAuthz::AuthenticatedSystem and YogoAuthz::AuthorizationSystem in application_controller.rb
 
-For every controller you want protected, add
-require_authorization
+Example: 
+  include YogoAuthz::AuthenticatedSystem
+  include YogoAuthz::AuthorizationSystem
 
+These two modules add several methods to the controllers to help control access.
 
-All components of this can be overwritten in the main app. That is just the way Ruby works.
+require_user :for => [:create, :new]
+login_required
+
+require_no_user
+
+require_group :sysadmin, :for => :create
+
+Several new controllers and routes are added to the system.
+
+user_session.rb is for authenticating users, and is available to non logged in users.
+
+The remaining controllers require a user in the sysadmin group. They can be access through
+/users
+/requirements - For setting login requirements for controllers/actions
+/groups
+/groups/:id/permissions - for setting Authorization requirements for controllers/actions
+
 
 == RESOURCES
 
@@ -53,10 +95,10 @@ All components of this can be overwritten in the main app. That is just the way 
 * Options to pass into require_authorization
 * Develop a model permissions component
 * Create initialization hooks
-* Add Generators to create
 * Clean up the views
-* Meditate on the scoping of the models.
-* Add user controller/action permissions. - ?
+* Merge corresponding restful actions new/create edit/update
+* Refactor the naming of various items.
+
 
 == LICENSE
 
