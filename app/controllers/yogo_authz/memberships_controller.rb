@@ -35,7 +35,7 @@ class YogoAuthz::MembershipsController < ApplicationController
   private
   
   def set_user
-    @web_user = YogoAuthz::WebUser.get(params[:user_id])
+    @web_user = WebUser.get(params[:user_id])
     #TODO: If @web_user.nil? throw an error
   end
 end

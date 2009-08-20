@@ -8,8 +8,9 @@ namespace :yogo_authz do
   task :load_default_info => :environment do
     YogoAuthz::Membership.auto_migrate!
     YogoAuthz::Permission.auto_migrate!
-    YogoAuthz::WebUser.auto_migrate!
+    WebUser.auto_migrate!
     YogoAuthz::Group.auto_migrate!
+    YogoAuthz::Requirement.auto_migrate!
     
     YogoAuthz::User.create(:login => "sysadmin",
                 :first_name            => "System",
@@ -19,7 +20,7 @@ namespace :yogo_authz do
                 :password_confirmation => "password"
                 )
               
-    user = YogoAuthz::WebUser.first(:login => 'sysadmin')
+    user = WebUser.first(:login => 'sysadmin')
     
     default_group = YogoAuthz::Group.create(:name => 'default')
     
