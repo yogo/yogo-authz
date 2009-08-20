@@ -1,5 +1,4 @@
 require 'rake'
-require 'rake/testtask'
 require 'rake/rdoctask'
 require 'spec/rake/spectask'
 require 'rubygems'
@@ -14,13 +13,6 @@ Spec::Rake::SpecTask.new(:spec) do |t|
   t.spec_files = FileList['spec/**/*_spec.rb']
 end
 
-desc 'Test the yogo_authz plugin.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
-end
 
 desc 'Generate documentation for the yogo_authz plugin.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
