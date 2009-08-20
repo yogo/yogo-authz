@@ -1,8 +1,8 @@
 # Yogo Authorization Module
 # Copyright (c) 2009 Montana State University
 #
-# FILE: web_user.rb
-# Datamapper's view into the Users table.
+# FILE: authenticated_system.rb
+# Implementing an authentication system.
 module YogoAuthz
   module AuthenticatedSystem
     
