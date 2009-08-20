@@ -12,7 +12,7 @@ class YogoAuthz::RequirementsController < ApplicationController
   authorize_group :sysadmin
   
   def index
-    @controllers = YogoAuthz::Controller.undeclaired
+    @controllers = YogoAuthz::Controller.undeclaired_authentications
     
     respond_to do |format|
       format.html

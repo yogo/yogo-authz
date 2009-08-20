@@ -14,7 +14,7 @@ class YogoAuthz::Controller
     @_declaired_auth_controllers ||= self.all.select{|cont| cont.declaired_auths }
   end
   
-  def self.undeclaired_authorizations
+  def self.undeclaired_authentications
     @_undeclaired_auth_controllers ||= self.all.select{|cont| !cont.declaired_auths }
   end
   
