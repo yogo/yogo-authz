@@ -1,13 +1,12 @@
 # YogoAuthz
 
-require 'yogo_authz/extensions/routes'
-require 'yogo_authz/extensions/exceptions'
-
-require 'yogo_authz/yogo_user'
-
-require 'yogo_authz/authenticated_system'
-require 'yogo_authz/authorization_system'
-require 'yogo_authz/controller_helpers'
+require File.dirname(__FILE__) + '/yogo_authz/extensions/routes'
+require File.dirname(__FILE__) + '/yogo_authz/extensions/exceptions'
+require File.dirname(__FILE__) + '/yogo_authz/yogo_user'
+require File.dirname(__FILE__) + '/yogo_authz/authenticated_system'
+require File.dirname(__FILE__) + '/yogo_authz/authorization_system'
+require File.dirname(__FILE__) + '/yogo_authz/controller_helpers'
+require File.dirname(__FILE__) + '/yogo_authz/authlogic_dm/compatability'
 
 # TODO: Play with these load paths for gem usage.
 # %w{ models controllers }.each do |dir|
