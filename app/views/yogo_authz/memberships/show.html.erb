@@ -6,7 +6,7 @@ Here I will show you the memberships.
     <li>
       <%= membership.group.name %>
       <%= link_to("Remove", 
-                  user_membership_path(@web_user.id, :membership_id => membership.id), 
+                  user_membership_path(@user.id, :membership_id => membership.id), 
                   :method => :delete) %>
     </li>
   <%- end -%>
@@ -18,7 +18,7 @@ Here I will show you the memberships.
     <li>
       <%= group.name %> 
       <%= link_to("Add", 
-                  user_membership_path(@web_user.id, :group_id => group.id), 
+                  user_membership_path(@user.id, :group_id => group.id), 
                   :method => 'post' ) %>
     </li>  
   <%- end -%>

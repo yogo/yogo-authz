@@ -12,31 +12,31 @@ class YogoAuthz::MembershipsController < ApplicationController
   before_filter :set_user
   
   def show
-    @user_memberships = @web_user.memberships
-    @groups = YogoAuthz::Group.all - @web_user.groups
+    @user_memberships = @user.memberships
+    @groups = YogoAuthz::Group.all - @user.groups
   end
   
   def create
-    YogoAuthz::Membership.create(:web_user => @web_user,
+    YogoAuthz::Membership.create(:user => @user,
                       :group => YogoAuthz::Group.get(params[:group_id]))
     
     respond_to do |format|
-      format.html { redirect_to(user_membership_path(@web_user.id)) }
+      format.html { redirect_to(user_membership_path(@user.id)) }
     end
   end
   
   def destroy
-    @web_user.memberships.get(params[:membership_id]).destroy
+    @user.memberships.get(params[:membership_id]).destroy
     
     respond_to do |format|
-      format.html { redirect_to(user_membership_path(@web_user.id)) }
+      format.html { redirect_to(user_membership_path(@user.id)) }
     end
   end
   
   private
   
   def set_user
-    @web_user = WebUser.get(params[:user_id])
-    #TODO: If @web_user.nil? throw an error
+    @user = User.get(params[:user_id])
+    #TODO: If @user.nil? throw an error
   end
 end

@@ -9,7 +9,6 @@ class YogoAuthz::UserSessionsController < ApplicationController
   # authorize_group :default
   
   def new
-    # debugger
     @user_session = YogoAuthz::UserSession.new
   end
   

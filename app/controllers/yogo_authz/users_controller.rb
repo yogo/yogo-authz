@@ -13,16 +13,16 @@ class YogoAuthz::UsersController < ApplicationController
   authorize_group :sysadmin
   
   def index
-    @users = WebUser.all
+    @users = User.all
     
   end
   
   def new
-    @user = YogoAuthz::User.new
+    @user = User.new
   end
   
   def create
-    @user = YogoAuthz::User.new(params[:yogo_authz_user])
+    @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Account registered!"
       redirect_back_or_default account_url
@@ -32,16 +32,16 @@ class YogoAuthz::UsersController < ApplicationController
   end
   
   def show
-    @user =YogoAuthz::User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def edit
-    @user =YogoAuthz::User.find(params[:id])
+    @user = User.find(params[:id])
   end
   
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
-    if @user.update_attributes(params[:yogo_authz_user])
+    if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
       redirect_to account_url
     else
@@ -50,7 +50,7 @@ class YogoAuthz::UsersController < ApplicationController
   end
   
   def destroy
-    @user = YogoAuthz::User.find(params[:id])
+    @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = "User Destroyed"
     redirect_to users_path

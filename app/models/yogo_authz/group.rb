@@ -21,7 +21,7 @@ class YogoAuthz::Group
   
   
   has n, :memberships, :model => 'YogoAuthz::Membership'
-  has n, :web_users, :through => :memberships,  :model => 'WebUser'
+  has n, :users, :through => :memberships,  :model => 'User'
   
   has n, :permissions, :model => 'YogoAuthz::Permission'
   

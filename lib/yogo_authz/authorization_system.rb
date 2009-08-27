@@ -97,22 +97,22 @@ module YogoAuthz
       return nil
     end
     
-    def url_authorized?(web_user, params = {}, binding = self.binding)
+    def url_authorized?(user, params = {}, binding = self.binding)
       # debugger
-      if !web_user.nil? 
-        return self.next_authorized_action_for(web_user, params, binding).nil? if self.has_inline_permissions?
-        return !self.controller_permissions(web_user, params).empty? if self.has_db_permissions?(params[:controller], params[:action])
+      if !user.nil? 
+        return self.next_authorized_action_for(user, params, binding).nil? if self.has_inline_permissions?
+        return !self.controller_permissions(user, params).empty? if self.has_db_permissions?(params[:controller], params[:action])
       end
       return true
     end
     
      # Returns permissions the given user has for the current controller and action
      #
-     def controller_permissions(web_user = nil, params = {})
+     def controller_permissions(user = nil, params = {})
        controller_name = params[:controller]
        action_name     = params[:action]
      
-       groups = web_user.groups
+       groups = user.groups
      
        permissions = groups.collect{ |g|
          g.self_and_ancestors.
@@ -165,7 +165,6 @@ module YogoAuthz
       # Checks the authorization of the current user.
       # Returns the proper results if
       def check_authorization
-        # return authorization_denied if current_web_user.nil?
         # return authorized if admin_groups.length > 0
         return authorization_denied unless self.url_authorized?(params)
         return authorized
@@ -178,7 +177,7 @@ module YogoAuthz
         else
           base = self.class
         end
-        base.url_authorized?(current_web_user, params, binding)  
+        base.url_authorized?(current_user, params, binding)  
       end
     
     end # module AuthroizationSystemInstanceMethod

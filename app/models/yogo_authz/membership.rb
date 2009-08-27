@@ -8,6 +8,6 @@ class YogoAuthz::Membership
   
   property :id,     Serial
   
-  belongs_to :group,    :model => 'YogoAuthz::Group'
-  belongs_to :web_user, :model => 'WebUser'
+  belongs_to :group, :model => 'YogoAuthz::Group'
+  belongs_to :user,  :model => 'User'
 end

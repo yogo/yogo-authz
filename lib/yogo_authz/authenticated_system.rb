@@ -25,7 +25,7 @@ module YogoAuthz
     
       base.send :before_filter, :check_authentication_requirements
       
-      base.send :helper_method, :logged_in?, :current_user, :current_web_user
+      base.send :helper_method, :logged_in?, :current_user
     end
     
     module AuthenticatedSystemClassMethods
@@ -115,13 +115,6 @@ module YogoAuthz
         def current_user
           return @current_user if defined?(@current_user)
           @current_user = current_user_session && current_user_session.record
-        end
-
-        def current_web_user
-          if current_user
-            return @current_web_user if defined?(@current_web_user)
-            @current_web_user = WebUser.get(current_user.id)
-          end
         end
         
         def logged_in?

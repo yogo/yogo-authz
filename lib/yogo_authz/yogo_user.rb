@@ -5,43 +5,67 @@
 # This module provides properties for a user of a Yogo system.
 module YogoAuthz
   module YogoUser
+
+        
+    def self.included(klass)
+      klass.class_eval do
+        include DataMapper::Resource
+        include AuthlogicDM::Compatability
+        
+        attr_accessor :password_confirmation
+
+        storage_names[:default] = 'users'
+
+        property :id,                 DataMapper::Types::Serial
+        property :login,              String, :nullable => false, :index => true
+        property :email,              String, :nullable => false, :length => 256
+        property :first_name,         String, :nullable => false, :length => 50
+        property :last_name,          String, :nullable => false, :length => 50  
+
+        property :crypted_password,   String, :nullable => false, :length => 128
+        property :password_salt,      String, :nullable => false, :length => 128
+        property :persistence_token,  String, :nullable => false, :index => true, :length => 128
+
+        property :login_count,        Integer, :nullable => false, :default => 0
+        property :failed_login_count, Integer, :nullable => false, :default => 0
+
+        property :last_request_at,    DateTime
+        property :last_login_at,      DateTime
+        property :current_login_at,   DateTime
+        # Long enough for an ipv6 address.
+        property :last_login_ip,      String, :length => 36
+        property :current_login_ip,   String, :length => 36
+
+        property :created_at, DateTime
+        property :created_on, Date
+
+        property :updated_at, DateTime
+        property :updated_on, Date
+
+        has n, :memberships, :model => 'YogoAuthz::Membership'
+        has n, :groups, :through => :memberships, :model => 'YogoAuthz::Group' 
+
+        extend  ClassMethods
+        include InstanceMethods
+        
+        acts_as_authentic do |config| 
+          config.instance_eval do
+           validates_uniqueness_of_email_field_options :scope => :id
+           validate_login_field false
+          end
+        end
+        
+      end
+    end
     
-    def is_yogo_user
-      include DataMapper::Resource
-
-      storage_names[:default] = 'users'
-
-      property :id,                 DataMapper::Types::Serial
-      property :login,              String, :nullable => false, :index => true
-      property :email,              String, :nullable => false, :length => 256
-      property :first_name,         String, :nullable => false, :length => 50
-      property :last_name,          String, :nullable => false, :length => 50  
-
-      property :crypted_password,   String, :nullable => false, :accessor => :private
-      property :password_salt,      String, :nullable => false, :accessor => :private
-      property :persistence_token,  String, :nullable => false, :accessor => :private, :index => true
-
-      property :login_count,        Integer, :nullable => false, :default => 0, :writer => :private
-      property :failed_login_count, Integer, :nullable => false, :default => 0, :writer => :private
-
-      property :last_request_at,    DateTime, :writer => :private
-      property :last_login_at,      DateTime, :writer => :private
-      property :current_login_at,   DateTime, :writer => :private
-      # Long enough for an ipv6 address.
-      property :last_login_ip,      String, :length => 36, :writer => :private 
-      property :current_login_ip,   String, :length => 36, :writer => :private
-
-      property :created_at, DateTime
-      property :created_on, Date
-
-      property :updated_at, DateTime
-      property :updated_on, Date
-
-      has n, :memberships, :model => 'YogoAuthz::Membership'
-      has n, :groups, :through => :memberships, :model => 'YogoAuthz::Group' 
-      
-      include YogoAuthz::YogoUser::InstanceMethods
-      
+    
+    
+    
+    module ClassMethods
+      def find_by_login(login)
+        self.first(:login => login)
+      end
+     
     end
     
     module InstanceMethods
@@ -57,6 +81,6 @@ module YogoAuthz
     end # InstanceMethods
     
     # This kind of makes me feel icky, but it works.
-    Object.send(:include, self)
+    # Object.send(:include, self)
   end #YogoUser
 end #YogoAuthz
