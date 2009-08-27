@@ -6,15 +6,15 @@
 module YogoAuthz
   module YogoUser
 
-        
     def self.included(klass)
       klass.class_eval do
         include DataMapper::Resource
         include AuthlogicDM::Compatability
-        
+
         attr_accessor :password_confirmation
 
         storage_names[:default] = 'users'
+
 
         property :id,                 DataMapper::Types::Serial
         property :login,              String, :nullable => false, :index => true
@@ -22,6 +22,7 @@ module YogoAuthz
         property :first_name,         String, :nullable => false, :length => 50
         property :last_name,          String, :nullable => false, :length => 50  
 
+        # TODO: Make sure a length of 128 is long enough for various encryption algorithms.
         property :crypted_password,   String, :nullable => false, :length => 128
         property :password_salt,      String, :nullable => false, :length => 128
         property :persistence_token,  String, :nullable => false, :index => true, :length => 128
@@ -47,7 +48,7 @@ module YogoAuthz
 
         extend  ClassMethods
         include InstanceMethods
-        
+
         acts_as_authentic do |config| 
           config.instance_eval do
            validates_uniqueness_of_email_field_options :scope => :id
@@ -57,10 +58,7 @@ module YogoAuthz
         
       end
     end
-    
-    
-    
-    
+
     module ClassMethods
       def find_by_login(login)
         self.first(:login => login)

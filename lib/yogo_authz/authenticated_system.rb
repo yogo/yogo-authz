@@ -29,9 +29,7 @@ module YogoAuthz
     end
     
     module AuthenticatedSystemClassMethods
-      
-      # 
-      # 
+
       def require_authentication(type = nil, options = {})
         options.assert_valid_keys(:if, :unless, :only, :for, :except)
         
@@ -66,7 +64,6 @@ module YogoAuthz
     module AuthenticatedSystemInstanceMethods
       protected
       
-        # The heart of the authentication system.
         # Check to see if the user is logged in or not.
         def check_authentication_requirements
           requirements = self.class.authenication_requirements

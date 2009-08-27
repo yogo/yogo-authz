@@ -1,6 +1,7 @@
-module YogoAuthz
-module AuthlogicDM
-  module Compatability
+module YogoAuthz #:nodoc:
+# This is a compatability layer for authlogic to use datamapper.
+module AuthlogicDM #:nodoc:
+  module Compatability #:nodoc:
     def self.included(klass)
       klass.class_eval do
         extend  ClassMethods

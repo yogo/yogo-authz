@@ -1,3 +1,8 @@
+# Yogo Authorization Module
+# Copyright (c) 2009 Montana State University
+#
+# File: user_sessions_controller.rb
+# The UserSessions Controller is used for logging people in and out of the system.
 class YogoAuthz::UserSessionsController < ApplicationController
   unloadable
   

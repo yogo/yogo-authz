@@ -26,21 +26,29 @@ This plugin/engine requires the following gems to be installed (many are the sam
 * rails_datamapper, :version ~> '0.10.0'
 * dm-validations
 * dm-timestamps
-* dm-validations
+* dm-aggregates
 * dm-is-nested_set
+* dm-ar-finders
 
 === Optional Gems for LDAP support
 * ruby-net-ldap
 * authlogic_ldap -- http://github.com/robbielamb/authlogic_ldap
 
 
-A file named 'webuser.rb' needs to be created in RAILS_ROOT/app/models and the class needs to have 'is_yogo_user' inside. Associations for your application can be added to this model.
+A class named 'User' needs to be created in RAILS_ROOT/app/models and the class needs to include the YogoUser module. Associations for your application can and any methods may be added to this model.
 
 Example:
-    class WebUser
-      is_yogo_user
+    require 'authlogic'
+    class User
+      include YogoAuthz::YogoUser
       
+      # An association with another model
       has n, :drops, :child_key => [ :user_id ]
+      
+      # A useful method
+      def puts_moo
+        puts 'moo'
+      end
     end
     
   In drop.rb
@@ -48,31 +56,36 @@ Example:
       include DataMapper::Resource
       
       property :id, Serial
-      belongs_to :user, :model => 'WebUser'
+      belongs_to :user, :model => 'User'
     end
     
-DataMapper should take care of the rest.
 
-This component provides other controllers, views, and models with sensible default permissions.
+This component provides other controllers, views, and models for managing users, groups, and permissionswith sensible default permissions.
 
 A rake task is provided to create the tables in the database and create a sysadmin user and password.
 
 rake yogo_authz:load_default_info
 
-Include YogoAuthz::AuthenticatedSystem and YogoAuthz::AuthorizationSystem in application_controller.rb
+To use the authentication and authorization components, include YogoAuthz::AuthenticatedSystem and YogoAuthz::AuthorizationSystem in application_controller.rb
 
 Example: 
-  include YogoAuthz::AuthenticatedSystem
-  include YogoAuthz::AuthorizationSystem
+    class ApplicationController < ActionController::Base
+      include YogoAuthz::AuthenticatedSystem
+      include YogoAuthz::AuthorizationSystem
+    end
 
 These two modules add several methods to the controllers to help control access.
 
+To require a logged in our logged out user:
 require_user :for => [:create, :new]
 login_required
 
 require_no_user
 
+To require a user with particular credentials:
+
 require_group :sysadmin, :for => :create
+
 
 Several new controllers and routes are added to the system.
 
@@ -84,20 +97,23 @@ The remaining controllers require a user in the sysadmin group. They can be acce
 /groups
 /groups/:id/permissions - for setting Authorization requirements for controllers/actions
 
+LDAP Support can be added by editing 'app/models/yogo_authz/user_session.rb'. In the future there
+will be a better way to enable ldap support.
 
 == RESOURCES
 
 == TODO
 * LDAP Support
-* Make Authlogic work with DataMapper
+* Create a way to configure this plugin from the initializers.
 * Write more tests
 * Decide where to redirect when authorization fails
-* Options to pass into require_authorization
 * Develop a model permissions component
-* Create initialization hooks
 * Clean up the views
 * Merge corresponding restful actions new/create edit/update
 * Refactor the naming of various items.
+* Add a password changing functionality.
+* Add email messages for when a user is created.
+* Add useful information to YogoAuthz::Controller model, a description field for the controllers, etc.
 
 
 == LICENSE
