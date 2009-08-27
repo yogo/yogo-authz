@@ -13,9 +13,6 @@ module YogoAuthz
 
         attr_accessor :password_confirmation
 
-        storage_names[:default] = 'users'
-
-
         property :id,                 DataMapper::Types::Serial
         property :login,              String, :nullable => false, :index => true
         property :email,              String, :nullable => false, :length => 256
