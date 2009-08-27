@@ -136,10 +136,10 @@ module AuthlogicDM #:nodoc:
     
     module InstanceMethods
       
-      def method_missing method_name, *args, &block
+      def method_missing(method_name, *args, &block)
         name = method_name.to_s
         super unless name[/_changed\?$/]
-        dirty_attributes.include? name.scan /(.*)_changed\?$/
+        dirty_attributes.include?(name.scan(/(.*)_changed\?$/))
       end
       
       def readonly?
