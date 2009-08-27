@@ -1,22 +1,36 @@
-begin
-  require File.dirname(__FILE__) + '/../../../../spec/spec_helper'
-rescue LoadError
-  puts "You need to install rspec in your base app"
-  exit
+# begin
+#   require File.dirname(__FILE__) + '/../../../../spec/spec_helper'
+# rescue LoadError
+#   puts "You need to install rspec in your base app"
+#   exit
+# end
+
+require "rubygems"
+require "active_record"
+require 'dm-core'
+require 'dm-timestamps'
+require 'dm-validations'
+require 'dm-is-nested_set'
+require 'authlogic'
+require File.dirname(__FILE__) + '/../lib/yogo_authz'
+require 'factory_girl'
+
+DataMapper.setup(:default, 'sqlite3::memory:')
+
+# Stub user model for testing
+class User
+ include YogoAuthz::YogoUser
+
 end
- 
-plugin_spec_dir = File.dirname(File.expand_path(__FILE__))
-ActiveRecord::Base.logger = Logger.new(plugin_spec_dir + "/debug.log")
+User.auto_migrate!
 
-databases = YAML::load(IO.read(plugin_spec_dir + "/db/database.yml"))
+# Dir["factories/*.rb"].each{ |f| require f }
 
-ActiveRecord::Base.establish_connection(databases[ENV["DB"] || "sqlite3"])
+# plugin_spec_dir = File.dirname(File.expand_path(__FILE__))
 
-databases['users']['database'] = plugin_spec_dir + "/" + databases['users']['database']
-
-DataMapper.setup(:default, databases[ENV["DB"] || "users"])
-DataMapper.logger = Rails.logger
+# 
+# DataMapper.setup(:default, databases[ENV["test"]])
+# DataMapper.logger = Rails.logger
 
 # This is the migration stuff for DataMapper
-Dir[File.join(plugin_spec_dir, "..", "app", "models", "yogo_authz", "*.rb")].each{ |f| require f }
-DataMapper.auto_migrate!
+# Dir[File.join(plugin_spec_dir, "..", "app", "models", "yogo_authz", "*.rb")].each{ |f| require f }
