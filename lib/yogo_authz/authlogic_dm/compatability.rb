@@ -29,34 +29,33 @@ module AuthlogicDM
           
           alias find_by_id get
           
-                  def define_callbacks *callbacks
-                    callbacks.each do |method_name|
-                      callback = method_name.scan /^(before|after)/
-                      method = %{
-                        def #{method_name} method_sym, options={}, &block
-                          puts "Called #{method_name}: \#{method_sym}, \#{options.inspect}"
-                          if block_given?
-                            #{callback} :#{method_name}, method_sym, &block
-                          else
-                            #{callback} :#{method_name} do
-                              if options[:if]
-                                return false unless send(options[:if])
-                              end
-                              if options[:unless]
-                                return false if send(options[:unless])
-                              end
-                              send method_sym
-                            end
-                          end
-                        end
-                        }
-          
-                      puts method
-                      instance_eval method
-            
-                      define_method method_name do; end
+          def define_callbacks *callbacks
+            callbacks.each do |method_name|
+              callback = method_name.scan /^(before|after)/
+              method = %{
+                def #{method_name} method_sym, options={}, &block
+                  # puts "Called #{method_name}: \#{method_sym}, \#{options.inspect}"
+                  if block_given?
+                    #{callback} :#{method_name}, method_sym, &block
+                  else
+                    #{callback} :#{method_name} do
+                      if options[:if]
+                        return false unless send(options[:if])
+                      end
+                      if options[:unless]
+                        return false if send(options[:unless])
+                      end
+                      send method_sym
                     end
                   end
+                end
+                }
+  
+              # puts method
+              instance_eval method
+              define_method method_name do; end
+            end
+          end
         end
         alias changed? dirty?
         self.define_callbacks *%w(
@@ -119,11 +118,6 @@ module AuthlogicDM
         :id
       end
 
-      # alias changed? dirty?
-      # puts self.name
-      # class << self
-      #   alias find_by_id get
-      # end
       
       protected
       
@@ -149,6 +143,10 @@ module AuthlogicDM
       
       def readonly?
         self.frozen?
+      end
+      
+      def new_record?
+        self.new?
       end
       
     end #InstanceMethods

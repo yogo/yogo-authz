@@ -66,7 +66,7 @@ module YogoAuthz
         self.first(:login => login)
       end
      
-    end
+    end # Class Methods
     
     module InstanceMethods
       def name
@@ -80,7 +80,5 @@ module YogoAuthz
       
     end # InstanceMethods
     
-    # This kind of makes me feel icky, but it works.
-    # Object.send(:include, self)
   end #YogoUser
 end #YogoAuthz
