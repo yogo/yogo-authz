@@ -13,4 +13,17 @@ class YogoAuthz::UserSession < Authlogic::Session::Base
   
   authenticate_with User
   
+  ldap_host 'ds.montana.edu'
+  ldap_port 636
+  ldap_login_format 'uid=%s,ou=People,dc=montana,dc=edu'
+  find_by_ldap_login_method :find_by_ldap_login
+  ldap_use_encryption true
+  ldap_create_in_database true
+  ldap_search_base 'ou=People,dc=montana,dc=edu'
+  
+  ldap_login_field :login
+  ldap_password_field :password
+  
+  ldap_search_local_database_first true
+  find_by_login_method :find_by_login
 end
