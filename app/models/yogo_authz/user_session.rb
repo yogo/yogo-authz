@@ -12,6 +12,7 @@ class YogoAuthz::UserSession < Authlogic::Session::Base
   # Users shouldn't have to touch this plug in to make it work.
   
   authenticate_with User
+  find_by_login_method :find_by_login
   
   ldap_host 'ds.montana.edu'
   ldap_port 636
