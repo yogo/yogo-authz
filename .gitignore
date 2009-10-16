@@ -4,3 +4,4 @@ spec/*.log
 rdoc/*
 pkg/*
 .svn
+tmtags
