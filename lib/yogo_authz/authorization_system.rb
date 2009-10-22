@@ -87,7 +87,7 @@ module YogoAuthz
           next if ( String===options[:unless] ? eval(options[:unless], binding) : options[:unless].call(params) )
         end
       
-        puts "The Type is #{type}"
+        # puts "The Type is #{type}"
         values.each { |value| 
           return { :url => options[:redirect_url], :status => options[:status] } unless 
                    (user and send("user_is_in_#{type}?", user, value))

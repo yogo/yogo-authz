@@ -21,9 +21,9 @@ http://github.com/guides/using-git-submodules-to-track-plugins
 This plugin/engine requires the following gems to be installed (many are the same as a yogo app):
 
 === Required Gems
-* authlogic -- http://github.com/binarylogic/authlogic/tree/master
-* dm-core, :version ~> '0.10.0'
-* rails_datamapper, :version ~> '0.10.0'
+* authlogic
+* dm-core
+* rails_datamapper
 * dm-validations
 * dm-timestamps
 * dm-aggregates
@@ -32,7 +32,7 @@ This plugin/engine requires the following gems to be installed (many are the sam
 
 === Optional Gems for LDAP support
 * ruby-net-ldap
-* authlogic_ldap -- http://github.com/robbielamb/authlogic_ldap
+* authlogic_ldap
 
 
 A class named 'User' needs to be created in RAILS_ROOT/app/models and the class needs to include the YogoUser module. Associations for your application can and any methods may be added to this model.
@@ -60,7 +60,7 @@ Example:
     end
     
 
-This component provides other controllers, views, and models for managing users, groups, and permissionswith sensible default permissions.
+This component provides other controllers, views, and models for managing users, groups, and permissions with sensible default permissions.
 
 A rake task is provided to create the tables in the database and create a sysadmin user and password.
 
@@ -84,7 +84,7 @@ require_no_user
 
 To require a user with particular credentials:
 
-require_group :sysadmin, :for => :create
+authorize_group :sysadmin, :for => :create
 
 
 Several new controllers and routes are added to the system.
