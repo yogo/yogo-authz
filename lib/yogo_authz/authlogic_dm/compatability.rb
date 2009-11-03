@@ -35,7 +35,7 @@ module AuthlogicDM #:nodoc:
                callback = method_name.scan /^(before|after)/
                method = %{
                  def #{method_name} method_sym, options={}, &block
-                   puts "Called #{method_name}: \#{method_sym}, \#{options.inspect}"
+                   #puts "Called #{method_name}: \#{method_sym}, \#{options.inspect}"
                    if block_given?
                      #{callback} :#{method_name}, method_sym, &block
                    else
@@ -66,10 +66,7 @@ module AuthlogicDM #:nodoc:
                 )
         # Save the record and skip session maintenance all together.
           def save_without_session_maintenance(*args)
-            puts "in save_without_session_maintence"
-            puts "skip_session_maintence_true"
             self.skip_session_maintenance = true
-            puts "result = save()"
             result = save!() # I think this is datamapper's save
             self.skip_session_maintenance = false
             result
@@ -103,7 +100,7 @@ module AuthlogicDM #:nodoc:
       end
 
       def named_scope(name, options = {}, &block)
-        puts "Defining scope: #{name}"
+        # puts "Defining scope: #{name}"
         (class << self; self end).instance_eval do
            define_method name do
              case options
@@ -112,26 +109,8 @@ module AuthlogicDM #:nodoc:
              when Proc
                all(options.call)
              end
-             # if block
-             #             results = block.call
-             #             puts options.class
-             #             all(options.merge(results))
-             #           else
-             #             puts options.class
-             #             all(options)
-             #           end
            end
          end
-        # method = %{
-        #   def self.#{name}(options = {}, &block)
-        #     if block
-        #       all(options.merge(block.call))
-        #     else
-        #       all(options)
-        #     end
-        #   end
-        # }
-        # class_eval(method)
       end
 
 
@@ -146,15 +125,6 @@ module AuthlogicDM #:nodoc:
       def primary_key
         :id
       end
-
-      def logged_in
-        all(:conditions => ['last_request_at > ?', logged_in_timeout.seconds.ago])
-      end
-
-      def logged_out
-        all(:conditions => ["last_request_at is NULL or last_request_at <= ?", logged_in_timeout.seconds.ago])
-      end
-
 
       protected
 
