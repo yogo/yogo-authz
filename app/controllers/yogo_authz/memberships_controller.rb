@@ -17,7 +17,7 @@ class YogoAuthz::MembershipsController < ApplicationController
   end
   
   def create
-    YogoAuthz::Membership.create(:user => @user,
+    YogoAuthz::Membership.create(:user_id => @user.id,
                       :group => YogoAuthz::Group.get(params[:group_id]))
     
     respond_to do |format|
