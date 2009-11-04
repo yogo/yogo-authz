@@ -69,8 +69,8 @@ module YogoAuthz
       end
 
       def has_group?(value)
-        all_groups = self.groups.collect{|g| g.self_and_ancestors }.flatten
-        !all_groups.select{|gr| gr.name.eql? value.to_s}.empty?
+        @_list ||= self.groups.collect{|g| g.self_and_ancestors.collect(&:name) }.flatten
+        @_list.include?(value.to_s)
       end
       
     end # InstanceMethods
