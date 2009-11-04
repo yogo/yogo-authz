@@ -32,11 +32,11 @@ class YogoAuthz::UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
+    @user = User.get(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.get(params[:id])
   end
   
   def update
@@ -50,7 +50,7 @@ class YogoAuthz::UsersController < ApplicationController
   end
   
   def destroy
-    @user = User.find(params[:id])
+    @user = User.get(params[:id])
     @user.destroy
     flash[:notice] = "User Destroyed"
     redirect_to users_path
