@@ -73,6 +73,10 @@ module YogoAuthz
         @_list.include?(value.to_s)
       end
       
+      def to_param
+        self.id.to_s
+      end
+      
     end # InstanceMethods
     
   end #YogoUser
