@@ -1,4 +1,4 @@
-= YogoAuthz - An Authentication and Authorization component of the Yogo Data Management Toolkit
+= Yogo - An Authentication and Authorization component of the Yogo Data Management Toolkit
 == DESCRIPTION
 
 This a component of the Yogo Data Management Toolkit. It has been developed as a rails engine to keep 
@@ -8,10 +8,10 @@ with this component, but may be overwritten in a Rails app.
 
 The goals of this component are to provide a flexible and customizable authentication and 
 authorization system that is implemented separately from the main app. A minimal number of changes
-to a rails app are needed to fully utilize yogo-authz.
+to a rails app are needed to fully utilize yogo-.
 
 == INSTALL
-Due to apparent limitations in the way Rails loads engines, YogoAuthz currently only works as a plugin.
+Due to apparent limitations in the way Rails loads engines, Yogo currently only works as a plugin.
 
 The current recommended way to install this plugin is as a git submodule. This link shows a great
 example of how to install rails plugins as git submodules:
@@ -40,7 +40,7 @@ A class named 'User' needs to be created in RAILS_ROOT/app/models and the class 
 Example:
     require 'authlogic'
     class User
-      include YogoAuthz::YogoUser
+      include Yogo::YogoUser
       
       # An association with another model
       has n, :drops, :child_key => [ :user_id ]
@@ -64,14 +64,14 @@ This component provides other controllers, views, and models for managing users,
 
 A rake task is provided to create the tables in the database and create a sysadmin user and password.
 
-rake yogo_authz:load_default_info
+rake yogo:load_default_info
 
-To use the authentication and authorization components, include YogoAuthz::AuthenticatedSystem and YogoAuthz::AuthorizationSystem in application_controller.rb
+To use the authentication and authorization components, include Yogo::AuthenticatedSystem and Yogo::AuthorizationSystem in application_controller.rb
 
 Example: 
     class ApplicationController < ActionController::Base
-      include YogoAuthz::AuthenticatedSystem
-      include YogoAuthz::AuthorizationSystem
+      include Yogo::AuthenticatedSystem
+      include Yogo::AuthorizationSystem
     end
 
 These two modules add several methods to the controllers to help control access.
@@ -97,7 +97,7 @@ The remaining controllers require a user in the sysadmin group. They can be acce
 /groups
 /groups/:id/permissions - for setting Authorization requirements for controllers/actions
 
-LDAP Support can be added by editing 'app/models/yogo_authz/user_session.rb'. In the future there
+LDAP Support can be added by editing 'app/models/yogo_/user_session.rb'. In the future there
 will be a better way to enable ldap support.
 
 == RESOURCES
@@ -113,7 +113,7 @@ will be a better way to enable ldap support.
 * Refactor the naming of various items.
 * Add a password changing functionality.
 * Add email messages for when a user is created.
-* Add useful information to YogoAuthz::Controller model, a description field for the controllers, etc.
+* Add useful information to Yogo::Controller model, a description field for the controllers, etc.
 
 
 == LICENSE

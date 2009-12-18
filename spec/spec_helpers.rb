@@ -12,14 +12,14 @@ require 'dm-timestamps'
 require 'dm-validations'
 require 'dm-is-nested_set'
 require 'authlogic'
-require File.dirname(__FILE__) + '/../lib/yogo_authz'
+require File.dirname(__FILE__) + '/../lib/yogo_'
 require 'factory_girl'
 
 DataMapper.setup(:default, 'sqlite3::memory:')
 
 # Stub user model for testing
 class User
- include YogoAuthz::YogoUser
+ include Yogo::YogoUser
 
 end
 User.auto_migrate!
@@ -33,4 +33,4 @@ User.auto_migrate!
 # DataMapper.logger = Rails.logger
 
 # This is the migration stuff for DataMapper
-# Dir[File.join(plugin_spec_dir, "..", "app", "models", "yogo_authz", "*.rb")].each{ |f| require f }
+# Dir[File.join(plugin_spec_dir, "..", "app", "models", "yogo_", "*.rb")].each{ |f| require f }

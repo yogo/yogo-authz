@@ -12,7 +12,7 @@ module GroupSpec
     # end
 
     it "should do something" do
-      group = YogoAuthz::Group.create(:name => "Test Group")
+      group = Yogo::Group.create(:name => "Test Group")
       group.name.should == "Test Group"
     end
 
@@ -21,7 +21,7 @@ module GroupSpec
     end
     
     it "should not save" do
-      group = YogoAuthz::Group.new
+      group = Yogo::Group.new
       group.valid?.should == false
     end
     

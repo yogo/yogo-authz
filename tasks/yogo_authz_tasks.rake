@@ -1,45 +1,45 @@
 # desc "Explaining what the task does"
-# task :yogo_authz do
+# task :yogo_ do
 #   # Task goes here
 # end
-namespace :yogo_authz do
+namespace :yogo do
   
-  desc "Load Default authz information."
+  desc "Load Default  information."
   task :load_default_info => :environment do
-    YogoAuthz::Membership.auto_migrate!
-    YogoAuthz::Permission.auto_migrate!
+    Yogo::Membership.auto_migrate!
+    Yogo::Permission.auto_migrate!
     User.auto_migrate!
-    YogoAuthz::Group.auto_migrate!
-    YogoAuthz::Requirement.auto_migrate!
+    Yogo::Group.auto_migrate!
+    Yogo::Requirement.auto_migrate!
     
     User.create(:login => "sysadmin",
                 :first_name            => "System",
                 :last_name             => "Administrator",
-                :email                 => "acg-support@montana.edu",
+                :email                 => "yogo@montana.edu",
                 :password              => "password",
                 :password_confirmation => "password"
                 )
               
     user = User.first(:login => 'sysadmin')
     
-    default_group = YogoAuthz::Group.create(:name => 'default')
+    default_group = Yogo::Group.create(:name => 'default')
     
-    YogoAuthz::Group.create(:parent      => default_group, 
+    Yogo::Group.create(:parent      => default_group, 
                             :name        => 'sysadmin',
                             :description => 'User group with full administrator priviliges.',
                             :sysadmin    => true)
                             
-    YogoAuthz::Group.create(:parent      => default_group, 
+    Yogo::Group.create(:parent      => default_group, 
                             :name        => 'committee member',
                             :description => 'committee member')
                             
 
-    YogoAuthz::Group.create(:parent      => default_group, 
+    Yogo::Group.create(:parent      => default_group, 
                             :name        => 'administrator',
                             :description => 'administrator')
     
-    YogoAuthz::Membership.create(:user => user, 
-                      :group => YogoAuthz::Group.first(:name => 'sysadmin'))
+    Yogo::Membership.create(:user => user, 
+                      :group => Yogo::Group.first(:name => 'sysadmin'))
   end
   
 end

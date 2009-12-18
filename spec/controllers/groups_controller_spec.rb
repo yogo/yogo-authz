@@ -1,15 +1,15 @@
 require File.join(File.dirname(__FILE__), "../spec_helpers")
 
 module GroupsControllerSpec
-  describe YogoAuthz::GroupsController, "Post create" do
+  describe Yogo::GroupsController, "Post create" do
   
     before(:each) do
-      @group = mock_model(YogoAuthz::Group, :save => nil)
-      YogoAuthz::Group.stub!(:new).and_return(@group)
+      @group = mock_model(Yogo::Group, :save => nil)
+      Yogo::Group.stub!(:new).and_return(@group)
     end
   
     it "should create a new group" do
-      YogoAuthz::Group.should_receive(:new).
+      Yogo::Group.should_receive(:new).
         with("name" => "test", "parent_id" => '').
         and_return(@group)
       post :create, :group => {"name" => "test", "parent_id" => ''}
