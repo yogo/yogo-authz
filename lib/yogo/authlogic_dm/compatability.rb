@@ -37,9 +37,9 @@ module AuthlogicDM #:nodoc:
                  def #{method_name} method_sym, options={}, &block
                    #puts "Called #{method_name}: \#{method_sym}, \#{options.inspect}"
                    if block_given?
-                     #{callback} :#{method_name}, method_sym, &block
+                     #{callback[0][0]} :#{method_name}, method_sym, &block
                    else
-                     #{callback} :#{method_name} do
+                     #{callback[0][0]} :#{method_name} do
                        if options[:if]
                          return false unless send(options[:if])
                        end
