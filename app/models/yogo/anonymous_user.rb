@@ -1,4 +1,8 @@
-# Mimicks a normal user?
+# Yogo Authorization Module
+# Copyright (c) 2009 Montana State University
+#
+# FILE: anonymous_user.rb
+# Anonymous user object. Returned when a user isn't logged in.
 class Yogo::AnonymousUser
   
   def name

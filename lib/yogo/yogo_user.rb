@@ -64,10 +64,6 @@ module Yogo
       def find_by_login(login)
         self.first(:login => login)
       end
-      
-      def find_by_api_key(api_key)
-        self.first(:api_key => api_key)
-      end
      
     end # Class Methods
     
