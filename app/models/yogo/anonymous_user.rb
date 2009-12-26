@@ -10,7 +10,7 @@ class Yogo::AnonymousUser
   end
   
   def has_group?(value)
-    return value.eql?(Yogo::Settings[:anonymous_user_group])
+    return value.to_s.eql?(Yogo::Settings[:anonymous_user_group])
   end
   
   def method_missing(method, *args)
