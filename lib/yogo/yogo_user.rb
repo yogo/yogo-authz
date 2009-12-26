@@ -20,10 +20,14 @@ module Yogo
         property :last_name,          String, :required => true, :length => 50  
 
         # TODO: Make sure a length of 128 is long enough for various encryption algorithms.
-        property :crypted_password,   String, :required => true, :length => 128
-        property :password_salt,      String, :required => true, :length => 128
-        property :persistence_token,  String, :required => true, :index => true, :length => 128
-
+        property :crypted_password,     String, :required => true,  :length => 128
+        property :password_salt,        String, :required => true,  :length => 128
+        property :persistence_token,    String, :required => true,  :length => 128, :index => true
+        
+        if Yogo::Settings[:allow_api_key] == true
+          property :single_access_token,  String, :required => false, :length => 128, :index => true
+        end
+        
         property :login_count,        Integer, :required => true, :default => 0
         property :failed_login_count, Integer, :required => true, :default => 0
 
@@ -59,6 +63,10 @@ module Yogo
     module ClassMethods
       def find_by_login(login)
         self.first(:login => login)
+      end
+      
+      def find_by_api_key(api_key)
+        self.first(:api_key => api_key)
       end
      
     end # Class Methods

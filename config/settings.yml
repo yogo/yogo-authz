@@ -1,3 +1,6 @@
 anonymous_user_group: anonymous
 anonymous_user_name: anonymous
 sysadmin_group: sysadmin
+
+allow_api_key: false
+api_key_name: api_key
