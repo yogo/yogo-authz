@@ -10,9 +10,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :user_session, :controller => "yogo/user_sessions"
   
-  map.resources :requirements, :controller => "yogo/requirements",
-                               :except => [:update, :new, :destroy, :create, :edit],
-                               :member => { :add_user => :put, :add_no_user => :put, :remove_user  => :put }
+  # map.resources :requirements, :controller => "yogo/requirements",
+  #                              :except => [:update, :new, :destroy, :create, :edit],
+  #                              :member => { :add_user => :put, :add_no_user => :put, :remove_user  => :put }
   
   map.logout '/logout', :controller => 'yogo/user_sessions', :action => 'destroy'
   map.login '/login', :controller => 'yogo/user_sessions', :action => 'new'

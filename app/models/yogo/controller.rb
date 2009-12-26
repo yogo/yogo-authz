@@ -10,14 +10,6 @@ class Yogo::Controller
     @_controllers ||= self.get_controllers
   end
   
-  def self.declaired_authentications
-    @_declaired_auth_controllers ||= self.all.select{|cont| cont.declaired_auths }
-  end
-  
-  def self.undeclaired_authentications
-    @_undeclaired_auth_controllers ||= self.all.select{|cont| !cont.declaired_auths }
-  end
-  
   def self.declaired_authorizations
     @_declaired__controllers ||= self.all.select{|cont| cont.declaired_ }
   end
