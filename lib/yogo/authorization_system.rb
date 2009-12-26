@@ -41,7 +41,7 @@ module Yogo
       
         values = [values] unless Array === values
       
-        for key in [:only, :except]
+        for key in [:only, :except, :for]
           if options.has_key?(key)
             options[key] = [options[key]] unless Array === options[key]
             options[key] = options[key].compact.collect{|v| v.to_sym}
