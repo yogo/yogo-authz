@@ -111,15 +111,15 @@ module Yogo
 
         def current_user
           return @current_user if defined?(@current_user)
-          @current_user = current_user_session && current_user_session.record
+          @current_user = (current_user_session && current_user_session.record) || Yogo::AnonymousUser.new
         end
         
         def logged_in?
-          !!current_user
+          (current_user_session && current_user_session.record)
         end
         
         def not_logged_in?
-          !current_user
+          !logged_in?
         end
 
         def require_user

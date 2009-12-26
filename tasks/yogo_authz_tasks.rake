@@ -15,7 +15,7 @@ namespace :yogo do
     User.create(:login => "sysadmin",
                 :first_name            => "System",
                 :last_name             => "Administrator",
-                :email                 => "yogo@montana.edu",
+                :email                 => "acg-support@montana.edu",
                 :password              => "password",
                 :password_confirmation => "password"
                 )

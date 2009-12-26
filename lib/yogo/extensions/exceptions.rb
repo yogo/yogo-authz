@@ -9,4 +9,7 @@ module Yogo
   
   class AuthorizationExpressionInvalid < AuthorizationError
   end
+  
+  class UserMethodOnAnonymousUser < StandardError
+  end
 end

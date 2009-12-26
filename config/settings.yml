@@ -1,3 +1,4 @@
 anonymous_user_group: anonymous
-anonymous_user_name: anonymous
-sysadmin_group: sysadmin
+anonymous_user_name:  anonymous
+user_class:           User
+sysadmin_group:       sysadmin

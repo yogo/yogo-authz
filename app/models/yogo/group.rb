@@ -21,9 +21,13 @@ class Yogo::Group
   
   
   has n, :memberships, :model => 'Yogo::Membership'
-  has n, :users, :through => :memberships,  :model => 'User'
+  has n, :users, :through => :memberships,  :model => Yogo::Settings[:user_class]
   
   has n, :permissions, :model => 'Yogo::Permission'
+  
+  def to_param
+    self.id.to_s
+  end
   
   def to_s
     name
