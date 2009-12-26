@@ -15,6 +15,10 @@ class Yogo::UserSession < Authlogic::Session::Base
   find_by_login_method :find_by_login
 
 
+  if Yogo::Settings[:allow_api_key] == true
+    params_key Yogo::Settings[:api_key_name]
+  end
+
   ## Should be commented out for right now.
   # ldap_host 'ds.montana.edu'
   # ldap_port 636
