@@ -22,41 +22,19 @@ module Yogo
                 :authenication_requirements=,
                 :declaired_auths,
                 :declaired_auths=
-    
-      base.send :before_filter, :check_authentication_requirements
       
       base.send :helper_method, :logged_in?, :current_user
     end
     
     module AuthenticatedSystemClassMethods
 
-      def require_authentication(type = nil, options = {})
-        options.assert_valid_keys(:if, :unless, :only, :for, :except)
-        
-        unless self.declaired_auths ||= false
-          filter_parameter_logging :password, :ldap_password
-          self.declaired_auths = true
-        end
-        
-        for key in [:only, :except, :for]
-          if options.has_key?(key)
-            options[key] = [options[key]] unless Array === options[key]
-            options[key] = options[key].compact.collect{|v| v.to_sym}
-          end
-        end
-        
-        self.authenication_requirements ||=[]
-        self.authenication_requirements << {:type => type, :options  => options} unless type.nil?
-        
-      end
-
       def require_user(options = {})
-        require_authentication(:require_user, options)
+        authorize_group(:default, options)
       end
       alias_method :login_required, :require_user
 
       def require_no_user(options = {})
-        require_authentication(:require_no_user, options)
+        authorize_group(:anonymous, options)
       end
 
     end
@@ -64,45 +42,7 @@ module Yogo
     module AuthenticatedSystemInstanceMethods
       protected
       
-        # Check to see if the user is logged in or not.
-        def check_authentication_requirements
-          requirements = self.class.authenication_requirements
-          # Check the rules provided, don't check the database
-          if !requirements.empty?
-            requirements.each do |requirement|
-              type    = requirement[:type]
-              options = requirement[:options]
 
-              if options.has_key?(:only)
-                next unless options[:only].include?( (params[:action]||"index").to_sym )
-              end
-
-              if options.has_key?(:for)
-                next unless options[:for].include?( (params[:action]||"index").to_sym )
-              end
-
-              if options.has_key?(:except)
-                next if options[:except].include?( (params[:action]||"index").to_sym )
-              end
-
-              if options.has_key?(:if)
-                next unless ( String==options[:if] ? eval(options[:if], binding) : options[:if].call(params) )
-              end
-              
-              return send("#{type}")
-            end
-          else
-            requirement = Yogo::Requirement.first(:controller_name => params[:controller],
-                                                       :action_name     => params[:action])
-                                                       
-            return true            if requirement.nil?
-            return require_user    if requirement.require_user
-            return require_no_user if requirement.require_no_user
-            return true
-          end
-
-          return true
-        end
         
         def current_user_session
           return @current_user_session if defined?(@current_user_session)
