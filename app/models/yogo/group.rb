@@ -6,12 +6,15 @@
 class Yogo::Group
   include DataMapper::Resource
   
-  is_nested_set
+  is_nested_set( :scope => [:foreign_id] )
   
   property :id,           Serial
   property :name,         String, :required => true, :unique => true
   property :description,  String
   property :sysadmin,     Boolean, :required => true, :default => false
+  
+  property :type,         Discriminator
+  property :foreign_id,   Integer, :required => false, :default => 0
   
   property :created_at, DateTime
   property :created_on, Date
