@@ -39,51 +39,29 @@ module Yogo
       private
       
       def generate_groups_controller(parents)
-        # class_name = @self.name
-        # class_var = @self.name.underscore
         eval <<-END_CLASS
           class Yogo::#{self.name}GroupsController < ApplicationController
-            before_filter :find_#{self.name.underscore}
-
-            def index
-              @groups = @parent.groups
-              render(:template => 'yogo/tmp_groups/index')
-            end
             
-            def show
-              @group = @parent.groups.find(params[:id])
-              render(:template => 'yogo/tmp_groups/index')
-              
-              render(:template => 'yogo/tmp_groups/show')
-            end
-            
-            def new
-              @group = @parent.groups.new
-              
-              render(:template => 'yogo/tmp_groups/new')
-            end
-
             private
-
-            def find_#{self.name.underscore}
-              puts "Finding " + #{self.name}.to_s
-              @parent = #{self.name}.first(:id => params[:#{self.name.underscore}_id]) ||
-                                          #{self.name}.first(:name => params[:#{self.name.underscore}_id])
-
+            def self.parent_class
+              #{self.name}
             end
             
-            def parent_path
-              
+            def parent_class
+              self.class.parent_class
             end
           end
         END_CLASS
+        
+        controller = eval("Yogo::#{self.name}GroupsController")
+        controller.send(:include, Yogo::Templates::GroupsController)
       end
 
     end
     
     module InstanceMethods
       
-      def permit?
+      def permit?(user, controller = '', action = '', options = {})
         true
       end
       

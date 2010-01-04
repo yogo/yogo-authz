@@ -76,6 +76,7 @@ module Yogo
         @_list ||= self.groups.collect{|g| g.self_and_ancestors.collect(&:name) }.flatten
         @_list.include?(value.to_s)
       end
+      alias :in_group? :has_group?
       
       # This method allows us to do things like
       #    yogo_project_path(@project)
